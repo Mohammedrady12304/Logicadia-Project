@@ -1,0 +1,6 @@
+@LOGICADIA_HostAddress = http://localhost:5043
+
+GET {{LOGICADIA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
