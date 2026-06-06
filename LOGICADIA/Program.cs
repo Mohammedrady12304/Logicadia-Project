@@ -1,5 +1,6 @@
 using LOGICADIA.Data;
 using LOGICADIA.Models;
+using LOGICADIA.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,19 +10,37 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddOpenApi();
+// builder.Services.AddOpenApi(); // احذف دي
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
     .AddEntityFrameworkStores<AppDbContext>();
-    
+
+// Register Gameplay Services
+builder.Services.AddScoped<ILevelService, LevelService>();
+builder.Services.AddScoped<IStoryService, StoryService>();
+builder.Services.AddScoped<IScenarioService, ScenarioService>();
+builder.Services.AddScoped<IChoiceService, ChoiceService>();
+builder.Services.AddScoped<IScoreService, ScoreService>();
+builder.Services.AddScoped<ILevelUnlockService, LevelUnlockService>();
+builder.Services.AddScoped<IUserProgressService, UserProgressService>();
+builder.Services.AddScoped<IAchievementEngine, AchievementEngine>();
+builder.Services.AddScoped<IXpSystem, XpSystem>();
+builder.Services.AddScoped<ILeaderboardService, LeaderboardService>();
+builder.Services.AddScoped<IWeeklyStatisticsService, WeeklyStatisticsService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    // app.MapOpenApi(); // احذف دي
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();

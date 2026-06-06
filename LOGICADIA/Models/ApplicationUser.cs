@@ -6,7 +6,7 @@ namespace LOGICADIA.Models
 {
     public class ApplicationUser : IdentityUser<int>
     {
-        public string Username { get; set; } = null!;
+        
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLogin { get; set; }
 

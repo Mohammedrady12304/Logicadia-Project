@@ -1,54 +1,182 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\LOGICADIA\\",
+  "WorkspaceRootPath": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\migrations\\20260606063352_initialcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\migrations\\20260606063352_initialcreation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\userprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\userprogress.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\choice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062607_newMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:LOGICADIA\\Migrations\\20260606062607_newMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\payment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\level.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\level.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\storydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\storydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\achievementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\achievementdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\story.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\choicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\choicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\models\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\scenario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\leaderboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\leaderboarddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|e:\\logicadia\\logicadia\\logicadia.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
-      "RelativeMoniker": "D:0:0:{089E2631-2C9D-496B-B730-EF1D5F919ECA}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\logicadia.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\scenariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\scenariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\userprogressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\userprogressdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\dtos\\leveldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\dtos\\leveldto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\scenarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\scenarioservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\leaderboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\leaderboardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\choiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\choiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\storyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\storyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\levelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\levelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\achievementengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\achievementengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\levelunlockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\levelunlockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\xpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\xpsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\userprogressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\userprogressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\scoreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\scoreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\services\\weeklystatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\services\\weeklystatisticsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\levelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\levelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\statisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\statisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\achievementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\achievementscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\scenarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\scenarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\choicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\choicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\progresscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\storiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\storiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\controllers\\leaderboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\controllers\\leaderboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\models\\userachievement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\models\\userachievement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\gameplay_engine_documentation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\gameplay_engine_documentation.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\api_testing_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\api_testing_guide.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\implementation_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\architecture_overview.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\architecture_overview.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\deployment_checklist.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\deployment_checklist.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\quick_reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\quick_reference.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\project_completion_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\project_completion_summary.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\documentation_index.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\documentation_index.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|c:\\users\\itstore\\onedrive\\desktop\\iti graduation project\\logicadia-project\\logicadia\\readme_start_here.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{BFBE2F39-D8E0-7C52-FED3-C0E561E37654}|LOGICADIA\\LOGICADIA.csproj|solutionrelative:logicadia\\readme_start_here.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,175 +186,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\ApplicationUser.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\ApplicationUser.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T22:41:33.658Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AppDbContext.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Data\\AppDbContext.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Data\\AppDbContext.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Data\\AppDbContext.cs",
-              "RelativeToolTip": "LOGICADIA\\Data\\AppDbContext.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAIAwwCwAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T22:22:21.082Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\appsettings.json",
-              "RelativeDocumentMoniker": "LOGICADIA\\appsettings.json",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\appsettings.json",
-              "RelativeToolTip": "LOGICADIA\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-06-05T21:51:19.434Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Program.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Program.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Program.cs",
-              "RelativeToolTip": "LOGICADIA\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:46:04.898Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserProgress.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\UserProgress.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\UserProgress.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\UserProgress.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\UserProgress.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAQwAAAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:24:49.33Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Choice.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\Choice.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\Choice.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\Choice.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\Choice.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:22:54.516Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Payment.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\Payment.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\Payment.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\Payment.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\Payment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:23:39.962Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Level.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\Level.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\Level.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\Level.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\Level.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:23:31.762Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Story.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\Story.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\Story.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\Story.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\Story.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:24:11.027Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Scenario.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\Scenario.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\Scenario.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\Scenario.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\Scenario.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:24:02.636Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "test.cs",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\Models\\test.cs",
-              "RelativeDocumentMoniker": "LOGICADIA\\Models\\test.cs",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\Models\\test.cs",
-              "RelativeToolTip": "LOGICADIA\\Models\\test.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T21:21:51.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LOGICADIA.http",
-              "DocumentMoniker": "E:\\LOGICADIA\\LOGICADIA\\LOGICADIA.http",
-              "RelativeDocumentMoniker": "LOGICADIA\\LOGICADIA.http",
-              "ToolTip": "E:\\LOGICADIA\\LOGICADIA\\LOGICADIA.http",
-              "RelativeToolTip": "LOGICADIA\\LOGICADIA.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-06-05T21:07:43.606Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Bookmark",
@@ -238,7 +206,546 @@
             },
             {
               "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "LOGICADIA\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Properties\\launchSettings.json",
+              "RelativeToolTip": "LOGICADIA\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-06T09:43:09.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "UserProgressDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\UserProgressDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\UserProgressDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\UserProgressDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\UserProgressDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:17.252Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ScenarioDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\ScenarioDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\ScenarioDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\ScenarioDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\ScenarioDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:16.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LeaderboardDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\LeaderboardDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\LeaderboardDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\LeaderboardDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\LeaderboardDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:16.001Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ChoiceDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\ChoiceDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\ChoiceDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\ChoiceDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\ChoiceDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:15.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AchievementDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\AchievementDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\AchievementDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\AchievementDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\AchievementDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:14.38Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "StoryDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\StoryDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\StoryDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\StoryDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\StoryDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:13.256Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20260606063352_InitialCreation.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606063352_InitialCreation.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Migrations\\20260606063352_InitialCreation.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606063352_InitialCreation.cs",
+              "RelativeToolTip": "LOGICADIA\\Migrations\\20260606063352_InitialCreation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:33:54.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Program.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Program.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Program.cs",
+              "RelativeToolTip": "LOGICADIA\\Program.cs",
+              "ViewState": "AgIAABsAAAAAzcmLTAAHwA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:52:13.88Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LevelDTO.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\LevelDTO.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\DTOs\\LevelDTO.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DTOs\\LevelDTO.cs",
+              "RelativeToolTip": "LOGICADIA\\DTOs\\LevelDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:48:17.775Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "ScenarioService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ScenarioService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\ScenarioService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ScenarioService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\ScenarioService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:19.803Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "README_START_HERE.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\README_START_HERE.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\README_START_HERE.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\README_START_HERE.md",
+              "RelativeToolTip": "LOGICADIA\\README_START_HERE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPsBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:13:32.846Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "DOCUMENTATION_INDEX.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DOCUMENTATION_INDEX.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\DOCUMENTATION_INDEX.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DOCUMENTATION_INDEX.md",
+              "RelativeToolTip": "LOGICADIA\\DOCUMENTATION_INDEX.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:12:01.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "PROJECT_COMPLETION_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\PROJECT_COMPLETION_SUMMARY.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\PROJECT_COMPLETION_SUMMARY.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\PROJECT_COMPLETION_SUMMARY.md",
+              "RelativeToolTip": "LOGICADIA\\PROJECT_COMPLETION_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALMBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:11:19.863Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "QUICK_REFERENCE.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\QUICK_REFERENCE.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\QUICK_REFERENCE.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\QUICK_REFERENCE.md",
+              "RelativeToolTip": "LOGICADIA\\QUICK_REFERENCE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:10:38.884Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "DEPLOYMENT_CHECKLIST.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DEPLOYMENT_CHECKLIST.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\DEPLOYMENT_CHECKLIST.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\DEPLOYMENT_CHECKLIST.md",
+              "RelativeToolTip": "LOGICADIA\\DEPLOYMENT_CHECKLIST.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:10:01.008Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "ARCHITECTURE_OVERVIEW.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\ARCHITECTURE_OVERVIEW.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\ARCHITECTURE_OVERVIEW.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\ARCHITECTURE_OVERVIEW.md",
+              "RelativeToolTip": "LOGICADIA\\ARCHITECTURE_OVERVIEW.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJgBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:09:38.286Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "IMPLEMENTATION_SUMMARY.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\IMPLEMENTATION_SUMMARY.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\IMPLEMENTATION_SUMMARY.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\IMPLEMENTATION_SUMMARY.md",
+              "RelativeToolTip": "LOGICADIA\\IMPLEMENTATION_SUMMARY.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:09:04.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "API_TESTING_GUIDE.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\API_TESTING_GUIDE.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\API_TESTING_GUIDE.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\API_TESTING_GUIDE.md",
+              "RelativeToolTip": "LOGICADIA\\API_TESTING_GUIDE.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:07:30.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "GAMEPLAY_ENGINE_DOCUMENTATION.md",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\GAMEPLAY_ENGINE_DOCUMENTATION.md",
+              "RelativeDocumentMoniker": "LOGICADIA\\GAMEPLAY_ENGINE_DOCUMENTATION.md",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\GAMEPLAY_ENGINE_DOCUMENTATION.md",
+              "RelativeToolTip": "LOGICADIA\\GAMEPLAY_ENGINE_DOCUMENTATION.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-06-06T07:06:59.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "LOGICADIA\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAHMAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:55:12.919Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UserAchievement.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Models\\UserAchievement.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Models\\UserAchievement.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Models\\UserAchievement.cs",
+              "RelativeToolTip": "LOGICADIA\\Models\\UserAchievement.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBHwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:53:26.561Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "LeaderboardController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\LeaderboardController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\LeaderboardController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\LeaderboardController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\LeaderboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:51:06.739Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "StoriesController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\StoriesController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\StoriesController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\StoriesController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\StoriesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:51:04.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ProgressController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ProgressController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\ProgressController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ProgressController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\ProgressController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:51:03.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "ChoicesController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ChoicesController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\ChoicesController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ChoicesController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\ChoicesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:51:01.945Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ScenariosController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ScenariosController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\ScenariosController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\ScenariosController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\ScenariosController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:51:00.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AchievementsController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\AchievementsController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\AchievementsController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\AchievementsController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\AchievementsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:50:59.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "StatisticsController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\StatisticsController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\StatisticsController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\StatisticsController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\StatisticsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:50:57.927Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LevelsController.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\LevelsController.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Controllers\\LevelsController.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Controllers\\LevelsController.cs",
+              "RelativeToolTip": "LOGICADIA\\Controllers\\LevelsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:50:53.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "WeeklyStatisticsService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\WeeklyStatisticsService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\WeeklyStatisticsService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\WeeklyStatisticsService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\WeeklyStatisticsService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:27.506Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "ScoreService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ScoreService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\ScoreService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ScoreService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\ScoreService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:26.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "UserProgressService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\UserProgressService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\UserProgressService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\UserProgressService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\UserProgressService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:26.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "XpSystem.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\XpSystem.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\XpSystem.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\XpSystem.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\XpSystem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:25.785Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LevelUnlockService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LevelUnlockService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\LevelUnlockService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LevelUnlockService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\LevelUnlockService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:25.295Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AchievementEngine.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\AchievementEngine.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\AchievementEngine.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\AchievementEngine.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\AchievementEngine.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:24.617Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LevelService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LevelService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\LevelService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LevelService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\LevelService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:24.1Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "StoryService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\StoryService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\StoryService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\StoryService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\StoryService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:23.623Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ChoiceService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ChoiceService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\ChoiceService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\ChoiceService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\ChoiceService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:23.144Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LeaderboardService.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LeaderboardService.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Services\\LeaderboardService.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Services\\LeaderboardService.cs",
+              "RelativeToolTip": "LOGICADIA\\Services\\LeaderboardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:49:20.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20260606062910_editAppUserTable.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs",
+              "RelativeToolTip": "LOGICADIA\\Migrations\\20260606062910_editAppUserTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:29:11.496Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "LOGICADIA\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:27:43.762Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20260606062607_newMigration.cs",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062607_newMigration.cs",
+              "RelativeDocumentMoniker": "LOGICADIA\\Migrations\\20260606062607_newMigration.cs",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\Migrations\\20260606062607_newMigration.cs",
+              "RelativeToolTip": "LOGICADIA\\Migrations\\20260606062607_newMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-06T06:26:10.09Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\appsettings.json",
+              "RelativeDocumentMoniker": "LOGICADIA\\appsettings.json",
+              "ToolTip": "C:\\Users\\ITSTORE\\OneDrive\\Desktop\\ITI Graduation Project\\Logicadia-Project\\LOGICADIA\\appsettings.json",
+              "RelativeToolTip": "LOGICADIA\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-06-06T06:22:32.094Z"
             }
           ]
         },
@@ -248,11 +755,47 @@
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a0c5197d-0ac7-4b63-97cd-8872a789d233}"
             }
           ]
         }
