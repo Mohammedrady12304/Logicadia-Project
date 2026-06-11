@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Logicadia.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public ApplicationDbContext(
-            DbContextOptions<ApplicationDbContext> options)
+        public AppDbContext(
+            DbContextOptions<AppDbContext> options)
             : base(options)
         {
         }
@@ -19,13 +19,18 @@ namespace Logicadia.Infrastructure.Data
         public DbSet<User> Users => Set<User>();
 
         public DbSet<Role> Roles => Set<Role>();
-
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Story> Stories { get; set; }
+        public DbSet<Scenario> Scenarios { get; set; }
+        public DbSet<Choice> Choices { get; set; }
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<UserAchievement> UserAchievements { get; set; }
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(
-                typeof(ApplicationDbContext).Assembly);
+                typeof(AppDbContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
         }
