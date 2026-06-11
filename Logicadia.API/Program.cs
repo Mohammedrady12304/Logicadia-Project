@@ -1,8 +1,11 @@
 
+<<<<<<< HEAD
 using Logicadia.Application.Interfaces;
 using Logicadia.Infrastructure.Repositories;
 using Logicadia.Infrastructure.Services;
 
+=======
+>>>>>>> George
 namespace Logicadia.API
 {
     public class Program
@@ -16,6 +19,7 @@ namespace Logicadia.API
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+<<<<<<< HEAD
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<ILevelRepository, LevelRepository>();
@@ -34,6 +38,11 @@ namespace Logicadia.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+=======
+
+            var app = builder.Build();
+
+>>>>>>> George
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
