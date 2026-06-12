@@ -1,11 +1,12 @@
 
-<<<<<<< HEAD
 using Logicadia.Application.Interfaces;
+using Logicadia.Domain.Entities;
+using Logicadia.Infrastructure.Data;
 using Logicadia.Infrastructure.Repositories;
 using Logicadia.Infrastructure.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
-=======
->>>>>>> George
 namespace Logicadia.API
 {
     public class Program
@@ -18,10 +19,9 @@ namespace Logicadia.API
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            builder.Services.AddOpenApi();
-<<<<<<< HEAD
-            builder.Services.AddEndpointsApiExplorer();
+            //builder.Services.AddOpenApi();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<ILevelRepository, LevelRepository>();
             builder.Services.AddScoped<ILevelService, LevelService>();
             builder.Services.AddScoped<IStoryRepository, StoryRepository>();
@@ -32,21 +32,21 @@ namespace Logicadia.API
             builder.Services.AddScoped<IChoiceService, ChoiceService>();
             builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();
             builder.Services.AddScoped<IAchievementService, AchievementService>();
-            var app = builder.Build();
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
-=======
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders(); 
             var app = builder.Build();
 
->>>>>>> George
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
-                app.MapOpenApi();
+                app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

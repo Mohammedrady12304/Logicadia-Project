@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logicadia.Application.Features.DTOs.Achievement
 {
-     public class AchievementAdminDto
+    public class AchievementAdminDto
     {
         public int Id { get; set; }
         public string Title { get; set; } = null!;

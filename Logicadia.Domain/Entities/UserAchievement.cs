@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
+
 
 namespace Logicadia.Domain.Entities
 {
@@ -14,7 +11,7 @@ namespace Logicadia.Domain.Entities
         public DateTime EarnedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation
-      //  public virtual ApplicationUser User { get; set; } = null!;
+        public virtual ApplicationUser User { get; set; } = null!;
         public virtual Achievement Achievement { get; set; } = null!;
     }
 }

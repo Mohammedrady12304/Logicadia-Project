@@ -2,15 +2,13 @@
 using Logicadia.Application.Features.DTOs.Levels;
 using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Common;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 namespace Logicadia.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
-
     public class AdminLevelsController : ControllerBase
     {
         private readonly ILevelService _levelService;
@@ -81,3 +79,4 @@ namespace Logicadia.API.Controllers
         }
     }
 }
+

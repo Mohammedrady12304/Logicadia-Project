@@ -1,4 +1,6 @@
 ﻿using Logicadia.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,26 +10,159 @@ using System.Threading.Tasks;
 
 namespace Logicadia.Infrastructure.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public ApplicationDbContext(
-            DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
-        public DbSet<User> Users => Set<User>();
+        public DbSet<Story> Stories { get; set; }
+        public DbSet<Level> Levels { get; set; }
+        public DbSet<Scenario> Scenarios { get; set; }
+        public DbSet<Choice> Choices { get; set; }
+        public DbSet<UserProgress> UserProgress { get; set; }
+        public DbSet<Achievement> Achievements { get; set; }
+        public DbSet<UserAchievement> UserAchievements { get; set; }
+        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Payment> Payments { get; set; }
 
-        public DbSet<Role> Roles => Set<Role>();
-
-        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder builder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(
-                typeof(ApplicationDbContext).Assembly);
+            base.OnModelCreating(builder);
 
-            base.OnModelCreating(modelBuilder);
+
+
+
+            builder.Entity<ApplicationUser>(e =>
+            {
+                e.Property(u => u.Id).UseIdentityColumn();
+                e.Property(u => u.UserName).HasMaxLength(64).IsRequired();
+                e.Property(u => u.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                e.HasIndex(u => u.UserName).HasDatabaseName("IX_Users_UserName").IsUnique();
+                e.HasIndex(u => u.Email).HasDatabaseName("IX_Users_Email").IsUnique();
+                e.HasIndex(u => u.CreatedAt).HasDatabaseName("IX_Users_CreatedAt");
+            });
+
+            builder.Entity<Level>(e =>
+            {
+                e.HasKey(l => l.Id);
+                e.Property(l => l.Id).UseIdentityColumn();
+                e.Property(l => l.Title).IsRequired();
+                e.Property(l => l.XpReward).HasDefaultValue(0);
+                e.HasIndex(l => l.OrderIndex).HasDatabaseName("IX_Levels_OrderIndex").IsUnique();
+            });
+
+            builder.Entity<Story>(e =>
+            {
+                e.HasKey(s => s.Id);
+                e.Property(s => s.Id).UseIdentityColumn();
+                e.Property(s => s.Title).IsRequired();
+                e.HasOne(s => s.Level).WithMany(l => l.Stories)
+                    .HasForeignKey(s => s.LevelId).OnDelete(DeleteBehavior.Cascade);
+                e.HasIndex(s => s.LevelId).HasDatabaseName("IX_Stories_LevelId");
+                e.HasIndex(s => new { s.LevelId, s.OrderIndex })
+                    .HasDatabaseName("IX_Stories_LevelId_OrderIndex").IsUnique();
+            });
+
+            builder.Entity<Scenario>(e =>
+            {
+                e.HasKey(s => s.Id);
+                e.Property(s => s.Id).UseIdentityColumn();
+                e.Property(s => s.Title).IsRequired();
+                e.HasOne(s => s.Story).WithMany(st => st.Scenarios)
+                    .HasForeignKey(s => s.StoryId).OnDelete(DeleteBehavior.Cascade);
+                e.HasIndex(s => s.StoryId).HasDatabaseName("IX_Scenarios_StoryId");
+                e.HasIndex(s => new { s.StoryId, s.OrderIndex })
+                    .HasDatabaseName("IX_Scenarios_StoryId_OrderIndex").IsUnique();
+            });
+
+            builder.Entity<Choice>(e =>
+            {
+                e.HasKey(c => c.Id);
+                e.Property(c => c.Id).UseIdentityColumn();
+                e.Property(c => c.XpValue).HasDefaultValue(0);
+                e.HasOne(c => c.Scenario).WithMany(s => s.Choices)
+                    .HasForeignKey(c => c.ScenarioId).OnDelete(DeleteBehavior.Cascade);
+                e.HasIndex(c => c.ScenarioId).HasDatabaseName("IX_Choices_ScenarioId");
+                e.HasIndex(c => new { c.ScenarioId, c.IsCorrect })
+                    .HasDatabaseName("IX_Choices_ScenarioId_IsCorrect");
+            });
+
+            builder.Entity<UserProgress>(e =>
+            {
+                e.HasKey(p => p.Id);
+                e.Property(p => p.Id).UseIdentityColumn();
+                e.Property(p => p.CompletedAt).HasDefaultValueSql("GETUTCDATE()");
+                e.HasOne(p => p.User).WithMany(u => u.Progress)
+                    .HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
+                e.HasOne(p => p.Scenario).WithMany(s => s.UserProgresses)
+                    .HasForeignKey(p => p.ScenarioId).OnDelete(DeleteBehavior.Restrict);
+                e.HasOne(p => p.ChosenChoice).WithMany(c => c.UserProgresses)
+                    .HasForeignKey(p => p.ChosenChoiceId).OnDelete(DeleteBehavior.Restrict);
+                e.HasIndex(p => new { p.UserId, p.ScenarioId }).HasDatabaseName("IX_UserProgress_UserId_ScenarioId");
+                e.HasIndex(p => p.UserId).HasDatabaseName("IX_UserProgress_UserId");
+                e.HasIndex(p => p.CompletedAt).HasDatabaseName("IX_UserProgress_CompletedAt");
+            });
+
+            builder.Entity<Achievement>(e =>
+            {
+                e.HasKey(a => a.Id);
+                e.Property(a => a.Id).UseIdentityColumn();
+                e.Property(a => a.Title).HasMaxLength(128).IsRequired();
+                e.Property(a => a.TriggerType).HasMaxLength(64).IsRequired();
+                e.HasIndex(a => a.TriggerType).HasDatabaseName("IX_Achievements_TriggerType");
+            });
+
+            builder.Entity<UserAchievement>(e =>
+            {
+                e.HasKey(ua => ua.Id);
+                e.Property(ua => ua.Id).UseIdentityColumn();
+                e.Property(ua => ua.EarnedAt).HasDefaultValueSql("GETUTCDATE()");
+                e.HasOne(ua => ua.User).WithMany(u => u.UserAchievements)
+                    .HasForeignKey(ua => ua.UserId).OnDelete(DeleteBehavior.Cascade);
+                e.HasOne(ua => ua.Achievement).WithMany(a => a.UserAchievements)
+                    .HasForeignKey(ua => ua.AchievementId).OnDelete(DeleteBehavior.Cascade);
+                e.HasIndex(ua => new { ua.UserId, ua.AchievementId })
+                    .HasDatabaseName("IX_UserAchievements_UserId_AchievementId").IsUnique();
+            });
+
+            builder.Entity<Subscription>(e =>
+            {
+                e.HasKey(s => s.Id);
+                e.Property(s => s.Id).UseIdentityColumn();
+                e.Property(s => s.PlanName).HasMaxLength(64).IsRequired();
+                e.Property(s => s.Status).HasMaxLength(32).IsRequired();
+                e.HasOne(s => s.User).WithOne(u => u.Subscription)
+                    .HasForeignKey<Subscription>(s => s.UserId).OnDelete(DeleteBehavior.Cascade);
+                e.HasOne(s => s.LastPayment).WithMany()
+                    .HasForeignKey(s => s.LastPaymentId).OnDelete(DeleteBehavior.SetNull);
+                e.HasIndex(s => s.UserId).HasDatabaseName("IX_Subscriptions_UserId").IsUnique();
+                e.HasIndex(s => s.Status).HasDatabaseName("IX_Subscriptions_Status");
+                e.HasIndex(s => s.EndDate).HasDatabaseName("IX_Subscriptions_EndDate");
+            });
+
+            builder.Entity<Payment>(e =>
+            {
+                e.HasKey(p => p.Id);
+                e.Property(p => p.Id).UseIdentityColumn();
+                e.Property(p => p.Amount).HasColumnType("decimal(18,2)");
+                e.Property(p => p.Currency).HasMaxLength(8).HasDefaultValue("EGP");
+                e.Property(p => p.Status).HasMaxLength(32).IsRequired();
+                e.Property(p => p.Provider).HasMaxLength(64).IsRequired();
+                e.Property(p => p.ProviderTxId).HasMaxLength(256);
+                e.Property(p => p.PaymentMethod).HasMaxLength(64);
+                e.Property(p => p.CreatedAt).HasDefaultValueSql("GETUTCDATE()");
+                e.HasOne(p => p.User).WithMany(u => u.Payments)
+                    .HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Restrict);
+                e.HasOne(p => p.Subscription).WithMany(s => s.Payments)
+                    .HasForeignKey(p => p.SubscriptionId).OnDelete(DeleteBehavior.Restrict);
+                e.HasIndex(p => p.UserId).HasDatabaseName("IX_Payments_UserId");
+                e.HasIndex(p => p.SubscriptionId).HasDatabaseName("IX_Payments_SubscriptionId");
+                e.HasIndex(p => p.Status).HasDatabaseName("IX_Payments_Status");
+                e.HasIndex(p => p.ProviderTxId).HasDatabaseName("IX_Payments_ProviderTxId");
+                e.HasIndex(p => p.CreatedAt).HasDatabaseName("IX_Payments_CreatedAt");
+            });
         }
+
     }
 }

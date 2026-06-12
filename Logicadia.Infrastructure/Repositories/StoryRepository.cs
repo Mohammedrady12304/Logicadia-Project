@@ -11,9 +11,9 @@ namespace Logicadia.Infrastructure.Repositories
 {
     public class StoryRepository : IStoryRepository
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public StoryRepository(AppDbContext context)
+        public StoryRepository(ApplicationDbContext context)
         {
             _context = context;
         }

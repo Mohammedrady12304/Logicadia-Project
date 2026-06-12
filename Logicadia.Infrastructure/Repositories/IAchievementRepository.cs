@@ -9,12 +9,14 @@ namespace Logicadia.Infrastructure.Repositories
 {
     public interface IAchievementRepository
     {
-        Task<IEnumerable<Achievement>> GetAllAsync();
-        Task<(IEnumerable<Achievement> Data, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize);
+        
+            Task<IEnumerable<Achievement>> GetAllAsync();
+            Task<(IEnumerable<Achievement> Data, int TotalCount)> GetPagedAsync(int pageNumber, int pageSize);
 
-        Task<Achievement?> GetByIdAsync(int id);
-        Task AddAsync(Achievement achievement);
-        Task UpdateAsync(Achievement achievement);
-        Task DeleteAsync(Achievement achievement);
+            Task<Achievement?> GetByIdAsync(int id);
+            Task AddAsync(Achievement achievement);
+            Task UpdateAsync(Achievement achievement);
+            Task DeleteAsync(Achievement achievement);
+        }
     }
-}
+

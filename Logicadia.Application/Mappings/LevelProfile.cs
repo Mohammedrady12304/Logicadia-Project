@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
+using Logicadia.Application.Features.DTOs.Levels;
+using Logicadia.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
-using Logicadia.Domain.Entities;
-using Logicadia.Application.Features.DTOs.Levels;
+
 namespace Logicadia.Application.Mappings
 {
     public class LevelProfile : Profile

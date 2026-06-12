@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Logicadia.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logicadia.Domain.Entities;
 
 namespace Logicadia.Infrastructure.Repositories
 {

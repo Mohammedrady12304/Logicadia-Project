@@ -54,7 +54,7 @@ namespace Logicadia.Infrastructure.Migrations
                     b.HasIndex("TriggerType")
                         .HasDatabaseName("IX_Achievements_TriggerType");
 
-                    b.ToTable("Achievements");
+                    b.ToTable("Achievements", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.ApplicationRole", b =>
@@ -213,7 +213,7 @@ namespace Logicadia.Infrastructure.Migrations
                     b.HasIndex("ScenarioId", "IsCorrect")
                         .HasDatabaseName("IX_Choices_ScenarioId_IsCorrect");
 
-                    b.ToTable("Choices");
+                    b.ToTable("Choices", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.Level", b =>
@@ -245,7 +245,7 @@ namespace Logicadia.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_Levels_OrderIndex");
 
-                    b.ToTable("Levels");
+                    b.ToTable("Levels", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.Payment", b =>
@@ -315,7 +315,7 @@ namespace Logicadia.Infrastructure.Migrations
                     b.HasIndex("UserId")
                         .HasDatabaseName("IX_Payments_UserId");
 
-                    b.ToTable("Payments");
+                    b.ToTable("Payments", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.Scenario", b =>
@@ -348,7 +348,7 @@ namespace Logicadia.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_Scenarios_StoryId_OrderIndex");
 
-                    b.ToTable("Scenarios");
+                    b.ToTable("Scenarios", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.Story", b =>
@@ -381,7 +381,7 @@ namespace Logicadia.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_Stories_LevelId_OrderIndex");
 
-                    b.ToTable("Stories");
+                    b.ToTable("Stories", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.Subscription", b =>
@@ -428,7 +428,7 @@ namespace Logicadia.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_Subscriptions_UserId");
 
-                    b.ToTable("Subscriptions");
+                    b.ToTable("Subscriptions", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.UserAchievement", b =>
@@ -458,7 +458,7 @@ namespace Logicadia.Infrastructure.Migrations
                         .IsUnique()
                         .HasDatabaseName("IX_UserAchievements_UserId_AchievementId");
 
-                    b.ToTable("UserAchievements");
+                    b.ToTable("UserAchievements", (string)null);
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.UserProgress", b =>
@@ -504,7 +504,7 @@ namespace Logicadia.Infrastructure.Migrations
                     b.HasIndex("UserId", "ScenarioId")
                         .HasDatabaseName("IX_UserProgress_UserId_ScenarioId");
 
-                    b.ToTable("UserProgress");
+                    b.ToTable("UserProgress", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>

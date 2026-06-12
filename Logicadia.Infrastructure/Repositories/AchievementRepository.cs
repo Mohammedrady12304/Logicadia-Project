@@ -11,9 +11,9 @@ namespace Logicadia.Infrastructure.Repositories
 {
     public class AchievementRepository : IAchievementRepository
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public AchievementRepository(AppDbContext context)
+        public AchievementRepository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -58,6 +58,5 @@ namespace Logicadia.Infrastructure.Repositories
             _context.Achievements.Remove(achievement);
             await _context.SaveChangesAsync();
         }
-}
-
+    }
 }

@@ -1,20 +1,19 @@
-﻿using System;
+﻿using Logicadia.Domain.Entities;
+using Logicadia.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logicadia.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Logicadia.Infrastructure.Data;
-
 
 namespace Logicadia.Infrastructure.Repositories
 {
     public class LevelRepository : ILevelRepository
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public LevelRepository(AppDbContext context)
+        public LevelRepository(ApplicationDbContext context)
         {
             _context = context;
         }

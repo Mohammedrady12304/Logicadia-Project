@@ -6,7 +6,7 @@ namespace Logicadia.Domain.Entities
 {
     public class ApplicationUser : IdentityUser<int>
     {
-        public string Username { get; set; } = null!;
+       // public string Username { get; set; } = null!;
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLogin { get; set; }
 

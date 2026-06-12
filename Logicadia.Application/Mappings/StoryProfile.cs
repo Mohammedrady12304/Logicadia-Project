@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
+using Logicadia.Application.Features.DTOs.Stories;
+using Logicadia.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Logicadia.Domain.Entities;
-using Logicadia.Application.Features.DTOs.Stories;
+
 namespace Logicadia.Application.Mappings
 {
     public class StoryProfile : Profile

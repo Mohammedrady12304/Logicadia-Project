@@ -14,4 +14,5 @@ namespace Logicadia.Application.Features.DTOs.Choice
         public string? Feedback { get; set; }
         public int XpValue { get; set; }
     }
+
 }

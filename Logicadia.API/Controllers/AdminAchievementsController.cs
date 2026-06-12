@@ -1,9 +1,9 @@
-﻿using Logicadia.Application.Exceptions;
-using Logicadia.Application.Features.DTOs.Achievement;
-using Logicadia.Application.Interfaces;
-using Logicadia.Domain.Common;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Logicadia.Application.Exceptions;
+using Logicadia.Application.Interfaces;
+using Logicadia.Application.Features.DTOs.Achievement;
+using Logicadia.Domain.Common;
 
 namespace Logicadia.API.Controllers
 {
@@ -78,3 +78,4 @@ namespace Logicadia.API.Controllers
         }
     }
 }
+

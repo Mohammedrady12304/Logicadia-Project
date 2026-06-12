@@ -1,8 +1,4 @@
-﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logicadia.Domain.Entities
 {
@@ -17,5 +13,6 @@ namespace Logicadia.Domain.Entities
         // Navigation
         public virtual Story Story { get; set; } = null!;
         public virtual ICollection<Choice> Choices { get; set; } = new List<Choice>();
+        public virtual ICollection<UserProgress> UserProgresses { get; set; } = new List<UserProgress>();
     }
 }

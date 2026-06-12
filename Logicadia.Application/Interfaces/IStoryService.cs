@@ -1,6 +1,5 @@
 ﻿using Logicadia.Application.Features.DTOs.Stories;
 using Logicadia.Domain.Common;
-using Logicadia.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
