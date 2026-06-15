@@ -16,6 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Common\" />
+    <Folder Include="Validators\" />
     <ProjectReference Include="..\Logicadia.Domain\Logicadia.Domain.csproj" />
   </ItemGroup>
 

@@ -13,6 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Identity\" />
+    <Folder Include="Repositories\" />
     <ProjectReference Include="..\Logicadia.Application\Logicadia.Application.csproj" />
     <ProjectReference Include="..\Logicadia.Domain\Logicadia.Domain.csproj" />
   </ItemGroup>
