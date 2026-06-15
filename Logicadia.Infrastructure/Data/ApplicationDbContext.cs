@@ -1,4 +1,5 @@
-﻿using Logicadia.Domain.Entities;
+﻿
+using Logicadia.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,12 +23,26 @@ namespace Logicadia.Infrastructure.Data
 
         public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
 
+        public DbSet<Parent> Parents => Set<Parent>();
+        public DbSet<Child> Children => Set<Child>();
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(
                 typeof(ApplicationDbContext).Assembly);
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Role>().HasData(
+                new Role { Id = 1, Name = "Admin", CreatedAt = new DateTime(2026, 1, 1) },
+                new Role { Id = 2, Name = "Parent", CreatedAt = new DateTime(2026, 1, 1) },
+                new Role { Id = 3, Name = "Child", CreatedAt = new DateTime(2026, 1, 1) }
+            );
+
+           
+           
+
+
         }
     }
 }
