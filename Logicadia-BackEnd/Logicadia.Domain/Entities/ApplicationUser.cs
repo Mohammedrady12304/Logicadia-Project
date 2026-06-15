@@ -1,0 +1,19 @@
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+
+namespace Logicadia.Domain.Entities
+{
+    public class ApplicationUser : IdentityUser<int>
+    {
+       // public string Username { get; set; } = null!;
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? LastLogin { get; set; }
+
+        // Navigation
+        public virtual ICollection<UserProgress> Progress { get; set; } = new List<UserProgress>();
+        public virtual ICollection<UserAchievement> UserAchievements { get; set; } = new List<UserAchievement>();
+        public virtual Subscription? Subscription { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+    }
+}
