@@ -15,8 +15,8 @@ namespace Logicadia.Domain.Entities
         public string PasswordHash { get; set; } = string.Empty;
 
         public int RoleId { get; set; }
-
-        public ApplicationUser Role { get; set; }
+        public virtual ApplicationRole Role { get; set; }
+        //public ApplicationUser Role { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public DateTime? LastLogin { get; set; }
 

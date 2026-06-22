@@ -44,9 +44,10 @@ namespace Logicadia.Infrastructure.Data
                new ApplicationRole { Id = 2, Name = "Parent", CreatedAt = new DateTime(2026, 1, 1) },
                new ApplicationRole { Id = 3, Name = "Child", CreatedAt = new DateTime(2026, 1, 1) }
            );
+            builder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
-
-
+            
+ 
 
             builder.Entity<ApplicationUser>(e =>
             {
@@ -56,6 +57,11 @@ namespace Logicadia.Infrastructure.Data
                 e.HasIndex(u => u.UserName).HasDatabaseName("IX_Users_UserName").IsUnique();
                 e.HasIndex(u => u.Email).HasDatabaseName("IX_Users_Email").IsUnique();
                 e.HasIndex(u => u.CreatedAt).HasDatabaseName("IX_Users_CreatedAt");
+                ///////////////
+                e.HasOne(u => u.Role) // استخدام الـ Navigation Property اللي في الكلاس
+                 .WithMany()
+                 .HasForeignKey(u => u.RoleId)
+                 .OnDelete(DeleteBehavior.NoAction);
             });
 
             builder.Entity<Level>(e =>

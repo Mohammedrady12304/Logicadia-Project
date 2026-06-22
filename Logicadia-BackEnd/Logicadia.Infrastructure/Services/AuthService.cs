@@ -63,6 +63,7 @@ namespace Logicadia.Infrastructure.Services
             {
                 Name = dto.FullName,
                 Email = dto.Username,
+                UserName = dto.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 RoleId = parentRole.Id,
                 CreatedAt = DateTime.UtcNow
@@ -113,6 +114,7 @@ namespace Logicadia.Infrastructure.Services
             {
                 Name = dto.Name,
                 Email = dto.Username,
+                UserName = dto.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 RoleId = childRole.Id,
                 CreatedAt = DateTime.UtcNow
