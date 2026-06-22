@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +17,14 @@ namespace Logicadia.Infrastructure.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+        public DbSet<ApplicationUser> Users => Set<ApplicationUser>();
 
+        public DbSet<ApplicationRole> Roles => Set<ApplicationRole>();
+
+        public DbSet<RefreshToken> RefreshTokens => Set<RefreshToken>();
+
+        public DbSet<Parent> Parents => Set<Parent>();
+        public DbSet<Child> Children => Set<Child>();
         public DbSet<Story> Stories { get; set; }
         public DbSet<Level> Levels { get; set; }
         public DbSet<Scenario> Scenarios { get; set; }
@@ -29,6 +38,12 @@ namespace Logicadia.Infrastructure.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<ApplicationRole>().HasData(
+               new ApplicationRole { Id = 1, Name = "Admin", CreatedAt = new DateTime(2026, 1, 1) },
+               new ApplicationRole { Id = 2, Name = "Parent", CreatedAt = new DateTime(2026, 1, 1) },
+               new ApplicationRole { Id = 3, Name = "Child", CreatedAt = new DateTime(2026, 1, 1) }
+           );
 
 
 
