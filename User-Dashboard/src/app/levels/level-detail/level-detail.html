@@ -1,0 +1,56 @@
+<!-- Loading -->
+<div *ngIf="isLoading" class="text-center py-5">
+  <div class="spinner-border text-primary"></div>
+</div>
+
+<!-- Error -->
+<div *ngIf="errorMessage" class="alert alert-danger">
+  {{ errorMessage }}
+  <button class="btn btn-link" (click)="goBack()">Go back</button>
+</div>
+
+<!-- Level Content -->
+<div *ngIf="level && !isLoading">
+
+  <!-- Back Button -->
+  <button class="btn btn-link text-decoration-none mb-3 p-0" (click)="goBack()">
+    <i class="bi bi-arrow-left"></i> Back to Levels
+  </button>
+
+  <!-- Level Header -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="fw-bold">{{ level.title }}</h4>
+      <p class="text-muted">{{ level.description }}</p>
+      <span class="badge bg-warning text-dark">
+        <i class="bi bi-star-fill"></i> {{ level.xpReward }} XP
+      </span>
+    </div>
+  </div>
+
+  <!-- Stories -->
+  <h5 class="fw-bold mb-3">Stories</h5>
+
+  <div class="list-group">
+    <button
+      *ngFor="let story of level.stories"
+      class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+      (click)="openStory(story)">
+
+      <div>
+        <div class="fw-medium">{{ story.title }}</div>
+        <small class="text-muted">{{ story.narrativeText }}</small>
+      </div>
+
+      <span class="badge" [class.bg-success]="story.isCompleted" [class.bg-secondary]="!story.isCompleted">
+        {{ story.isCompleted ? 'Completed' : 'Not started' }}
+      </span>
+
+    </button>
+
+    <div *ngIf="level.stories.length === 0" class="text-center text-muted py-4">
+      No stories available in this level yet.
+    </div>
+  </div>
+
+</div>

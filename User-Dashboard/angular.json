@@ -7,7 +7,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "Logicadia-FrontEnd": {
+    "User-Dashboard": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -27,11 +27,13 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-               "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
-                       ]
+  "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+           
           },
           "configurations": {
             "production": {
@@ -61,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Logicadia-FrontEnd:build:production"
+              "buildTarget": "User-Dashboard:build:production"
             },
             "development": {
-              "buildTarget": "Logicadia-FrontEnd:build:development"
+              "buildTarget": "User-Dashboard:build:development"
             }
           },
           "defaultConfiguration": "development"

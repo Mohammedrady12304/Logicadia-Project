@@ -1,0 +1,53 @@
+<div class="login-page">
+  <div class="login-card">
+
+    <!-- Logo -->
+    <div class="logo">LOGICADIA</div>
+    <p class="subtitle">Ready for an adventure?</p>
+
+    <!-- Error Message -->
+    <div class="error-box" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="login()">
+
+      <div class="field-group">
+        <label class="field-label">Email</label>
+        <input
+          type="email"
+          class="field-input"
+          placeholder="you@example.com"
+          [(ngModel)]="email"
+          name="email"
+          required>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label">Password</label>
+        <input
+          type="password"
+          class="field-input"
+          placeholder="••••••••"
+          [(ngModel)]="password"
+          name="password"
+          required>
+      </div>
+
+      <button type="submit" class="login-btn" [disabled]="isLoading">
+        <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+        {{ isLoading ? 'Signing in...' : 'Start adventure' }}
+      </button>
+
+    </form>
+
+    <p class="footer-text">Let's learn and play together!</p>
+
+  </div>
+
+  <!-- Decorative floating shapes -->
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-3"></div>
+</div>
