@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
-  imports: [FormsModule ],
+  imports: [FormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
-  email = '';
-  password = '';
+  Username = '';
+  Password = '';
   errorMessage = '';
   isLoading = false;
 
@@ -21,9 +22,9 @@ export class Login {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.email, this.password).subscribe({
+    this.authService.login(this.Username, this.Password).subscribe({
       next: (response) => {
-        this.authService.saveToken(response.token);
+        this.authService.saveToken(response.token, response.role);
         if (this.authService.isUser()) {
           this.router.navigate(['/levels']);
         } else {
@@ -33,8 +34,9 @@ export class Login {
         this.isLoading = false;
       },
       error: () => {
-        this.errorMessage = 'Invalid email or password.';
+        this.errorMessage = 'Invalid Username or password.';
         this.isLoading = false;
       }
     });
-}}
+  }
+}

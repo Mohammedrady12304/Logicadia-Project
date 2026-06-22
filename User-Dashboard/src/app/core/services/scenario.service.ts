@@ -7,7 +7,7 @@ import { ScenarioPlayDto, SubmitChoiceDto, SubmitResultDto } from '../models/sce
   providedIn: 'root',
 })
 export class ScenarioService {
-  private apiUrl = 'http://localhost:5000/api/scenarios';
+  private apiUrl = 'https://localhost:44342/api/scenarios';
 
   constructor(private http: HttpClient) {}
 

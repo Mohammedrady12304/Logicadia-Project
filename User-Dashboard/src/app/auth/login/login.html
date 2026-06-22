@@ -14,13 +14,13 @@
     <form (ngSubmit)="login()">
 
       <div class="field-group">
-        <label class="field-label">Email</label>
+        <label class="field-label">Username</label>
         <input
-          type="email"
+          type="text"
           class="field-input"
           placeholder="you@example.com"
-          [(ngModel)]="email"
-          name="email"
+          [(ngModel)]="Username"
+          name="Username"
           required>
       </div>
 
@@ -30,8 +30,8 @@
           type="password"
           class="field-input"
           placeholder="••••••••"
-          [(ngModel)]="password"
-          name="password"
+          [(ngModel)]="Password"
+          name="Password"
           required>
       </div>
 
