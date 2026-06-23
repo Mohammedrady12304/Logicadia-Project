@@ -10,7 +10,7 @@ import { LevelDetailDto, StoryDto } from '../../core/models/level.models';
   styleUrl: './level-detail.css',
 })
 export class LevelDetail   implements OnInit{
-  level: LevelDetailDto | null = null;
+  level: any | null = null;
   isLoading = false;
   errorMessage = '';
 
@@ -28,6 +28,7 @@ loadLevel(levelId: number) {
     this.isLoading = true;
     this.levelService.getLevelById(levelId).subscribe({
       next: (data) => {
+        console.log(data);
         this.level = data;
         this.isLoading = false;
       },

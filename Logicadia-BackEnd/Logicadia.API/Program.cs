@@ -3,6 +3,7 @@ using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Entities;
 using Logicadia.Infrastructure.Data;
 using Logicadia.Infrastructure.Repositories;
+//using Logicadia.Infrastructure.Services.Services;
 using Logicadia.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -102,6 +103,7 @@ namespace Logicadia.API
 
             builder.Services.AddScoped<ILevelRepository, LevelRepository>();
             builder.Services.AddScoped<ILevelService, LevelService>();
+            builder.Services.AddScoped<Logicadia.Infrastructure.Services.Services.ILevelService, Logicadia.Infrastructure.Services.Services.LevelService>();
             builder.Services.AddScoped<IStoryRepository, StoryRepository>();
             builder.Services.AddScoped<IStoryService, StoryService>();
             builder.Services.AddScoped<IScenarioRepository, ScenarioRepository>();

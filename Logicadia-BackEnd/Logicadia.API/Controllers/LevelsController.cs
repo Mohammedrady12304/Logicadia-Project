@@ -8,7 +8,7 @@ namespace Logicadia.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class LevelsController : ControllerBase
     {
         private readonly ILevelService _levelService;

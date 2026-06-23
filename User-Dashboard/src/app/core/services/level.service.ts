@@ -7,12 +7,12 @@ import { LevelDetailDto ,LevelDto  } from '../models/level.models';
   providedIn: 'root',
 })
 export class LevelService {
-  private apiUrl = 'https://localhost:44342/api/levels';
+  private apiUrl = 'https://localhost:7213/api/levels';
 
   constructor(private http: HttpClient) {}
 
-  getAllLevels(): Observable<LevelDto[]> {
-    return this.http.get<LevelDto[]>(this.apiUrl);
+  getAllLevels(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
   }
 
   getLevelById(levelId: number): Observable<LevelDetailDto> {

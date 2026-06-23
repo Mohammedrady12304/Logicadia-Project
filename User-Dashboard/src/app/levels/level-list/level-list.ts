@@ -11,7 +11,7 @@ import { LevelDto } from '../../core/models/level.models';
   styleUrl: './level-list.css'
 })
 export class LevelList implements OnInit {
-  levels: LevelDto[] = [];
+  levels: any[] = [];
   isLoading = false;
   errorMessage = '';
   totalXp = 0;
@@ -27,6 +27,7 @@ export class LevelList implements OnInit {
     this.isLoading = true;
     this.levelService.getAllLevels().subscribe({
       next: (data) => {
+        console.log(data);
         this.levels = data;
         this.calculateProgress();
         this.isLoading = false;
