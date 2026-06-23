@@ -1,0 +1,160 @@
+:root {
+  --navy-dark: #0F0B2D;
+  --navy-light: #1a1647;
+  --purple-accent: #7C3AED;
+  --purple-light: #A78BFA;
+  --white: #FFFFFF;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 30px;
+  background: radial-gradient(circle at top, var(--navy-light), var(--navy-dark));
+  color: var(--white);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== LOADING ===== */
+.spinner-border {
+  color: var(--purple-accent) !important;
+}
+
+/* ===== ERROR ALERT ===== */
+.alert-danger {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: var(--white);
+  border-radius: 14px;
+}
+
+/* ===== MAIN CARD (GLASS EFFECT) ===== */
+.card {
+  background: rgba(26, 22, 71, 0.55);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 25px 60px rgba(124, 58, 237, 0.25);
+}
+
+/* ===== TITLE + DESCRIPTION ===== */
+h4 {
+  color: var(--purple-light);
+  letter-spacing: 0.5px;
+}
+
+.text-muted {
+  color: var(--gray-300) !important;
+}
+
+/* ===== CHOICE BUTTONS ===== */
+.btn {
+  border-radius: 12px;
+  transition: all 0.25s ease;
+  padding: 12px 14px;
+  font-weight: 500;
+}
+
+/* unselected */
+.btn-outline-primary {
+  border: 1px solid rgba(167, 139, 250, 0.4) !important;
+  color: var(--purple-light) !important;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: rgba(124, 58, 237, 0.15);
+  transform: translateX(4px);
+}
+
+/* selected */
+.btn-primary {
+  background: linear-gradient(135deg, var(--purple-accent), var(--purple-light)) !important;
+  border: none !important;
+  box-shadow: 0 0 18px rgba(124, 58, 237, 0.35);
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.btn-success {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  border: none;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.25);
+}
+
+/* ===== FEEDBACK ALERT ===== */
+.alert {
+  border-radius: 14px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: var(--white);
+}
+
+.alert-danger {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--white);
+}
+
+/* icons glow */
+.bi {
+  margin-right: 6px;
+}
+
+/* ===== XP BADGE ===== */
+.badge.bg-warning {
+  background: linear-gradient(135deg, var(--purple-accent), var(--purple-light)) !important;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.35);
+}
+
+/* ===== CONTINUE BUTTON ===== */
+.btn-primary.w-100 {
+  background: linear-gradient(135deg, var(--purple-accent), var(--purple-light));
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-primary.w-100:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  :host {
+    padding: 15px;
+  }
+
+  .card {
+    padding: 20px !important;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
