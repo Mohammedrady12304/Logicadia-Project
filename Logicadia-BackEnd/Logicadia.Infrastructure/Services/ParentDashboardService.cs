@@ -42,64 +42,98 @@ namespace Logicadia.Infrastructure.Services
 
         public async Task<ChildProgressDetailsDto?> GetChildProgressAsync(int parentId, int childId)
         {
+            // Check child belongs to current parent user
             var child = await _context.Children
-                .FirstOrDefaultAsync(c => c.Id == childId && c.ParentId == parentId);
+                .Include(c => c.Parent)
+                .FirstOrDefaultAsync(c =>
+                    c.Id == childId &&
+                    c.Parent.UserId == parentId
+                );
 
-            if (child == null) return null;
+            if (child == null)
+                return null;
 
+
+            // Get child progress
             var progress = await _context.UserProgress
                 .Include(p => p.Level)
                 .Include(p => p.Story)
                 .Include(p => p.Scenario)
                 .FirstOrDefaultAsync(p => p.ChildId == childId);
 
+
+            // Get achievements
             var achievements = await _context.UserAchievements
                 .Where(ua => ua.ChildId == childId)
                 .Select(ua => ua.Achievement.Title)
                 .ToListAsync();
 
+
             return new ChildProgressDetailsDto
             {
                 ChildId = child.Id,
                 ChildName = child.Name,
+
                 CurrentLevelId = progress?.LevelId ?? 0,
                 CurrentLevelName = progress?.Level?.Title ?? "Not started yet",
+
                 CurrentStoryId = progress?.StoryId,
                 CurrentStoryTitle = progress?.Story?.Title ?? "Not selected",
+
                 CurrentScenarioId = progress?.ScenarioId,
                 CurrentScenarioName = progress?.Scenario?.Title ?? "Not selected",
+
                 UnlockedAchievements = achievements
             };
         }
 
-        
+
         public async Task<bool> AssignPathToChildAsync(int parentId, int childId, AssignPathDto dto)
         {
-            var childExists = await _context.Children.AnyAsync(c => c.Id == childId && c.ParentId == parentId);
-            if (!childExists) return false;
+            var child = await _context.Children
+                .Include(c => c.Parent)
+                .FirstOrDefaultAsync(c =>
+                    c.Id == childId &&
+                    c.Parent.UserId == parentId
+                );
 
-            var progress = await _context.UserProgress.FirstOrDefaultAsync(p => p.ChildId == childId);
+            if (child == null)
+                return false;
+
+
+            if (dto.ScenarioId == null)
+                return false;
+
+
+            var progress = await _context.UserProgress
+                .FirstOrDefaultAsync(p => p.ChildId == childId);
+
 
             if (progress == null)
             {
                 progress = new UserProgress
                 {
                     ChildId = childId,
+
+                    UserId = child.Parent.UserId,
+
                     LevelId = dto.LevelId,
                     StoryId = dto.StoryId,
-                    ScenarioId = (int)dto.ScenarioId
+                    ScenarioId = dto.ScenarioId.Value
                 };
+
                 _context.UserProgress.Add(progress);
             }
             else
             {
                 progress.LevelId = dto.LevelId;
                 progress.StoryId = dto.StoryId;
-                progress.ScenarioId = (int)dto.ScenarioId;
-                _context.UserProgress.Update(progress);
+                progress.ScenarioId = dto.ScenarioId.Value;
             }
 
+
             await _context.SaveChangesAsync();
+
             return true;
         }
     }

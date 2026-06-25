@@ -3,7 +3,7 @@ using LOGICADIA.DTOs;
 using Logicadia.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Logicadia.Infrastructure.Services.Services
+namespace Logicadia.Infrastructure.Services
 {
     public interface IAchievementEngine
     {

@@ -1,29 +1,80 @@
-<!-- Loading -->
-<div *ngIf="isLoading" class="text-center py-5">
-  <div class="spinner-border text-primary"></div>
+<div class="story-page">
+
+
+<div *ngIf="isLoading" class="loading">
+
+<div class="spinner-border text-light"></div>
+
 </div>
 
-<!-- Error -->
-<div *ngIf="errorMessage" class="alert alert-danger">
-  {{ errorMessage }}
-  <button class="btn btn-link" (click)="goBack()">Go back</button>
+
+
+<div *ngIf="errorMessage" class="error-box">
+
+{{errorMessage}}
+
+<button (click)="goBack()">
+Back
+</button>
+
 </div>
 
-<!-- Story Content -->
-<div *ngIf="story && !isLoading" class="d-flex flex-column align-items-center text-center py-5">
 
-  <button class="btn btn-link text-decoration-none align-self-start mb-3" (click)="goBack()">
-    <i class="bi bi-arrow-left"></i> Back
-  </button>
 
-  <div class="card shadow-sm p-4" style="max-width: 600px;">
-    <h4 class="fw-bold mb-3">{{ story.title }}</h4>
-    <p class="text-muted" style="line-height: 1.8;">{{ story.narrativeText }}</p>
 
-    <button class="btn btn-primary mt-3" (click)="startStory()">
-      {{ story.isCompleted ? 'Replay' : 'Start' }}
-      <i class="bi bi-arrow-right ms-1"></i>
-    </button>
-  </div>
+<div *ngIf="story && !isLoading" class="story-content">
+
+
+<button class="back-btn" (click)="goBack()">
+← Back
+</button>
+
+
+
+<div class="story-card">
+
+
+<div class="story-icon">
+📖
+</div>
+
+
+<h1>
+{{story.title}}
+</h1>
+
+
+<p class="story-text">
+{{story.narrativeText}}
+</p>
+
+
+
+<div class="scenario-info">
+
+<span>
+🎯 {{story.scenarios.length}} Scenarios
+</span>
+
+</div>
+
+
+
+<button class="start-btn" (click)="startStory()">
+
+{{story.isCompleted ? 'Replay Story' : 'Start Story'}}
+
+<span>
+→
+</span>
+
+</button>
+
+
+</div>
+
+
+</div>
+
 
 </div>
