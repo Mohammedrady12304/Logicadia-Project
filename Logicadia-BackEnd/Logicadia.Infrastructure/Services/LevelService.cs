@@ -1,15 +1,14 @@
 ﻿using AutoMapper;
 using Logicadia.Application.Exceptions;
 using Logicadia.Application.Features.DTOs.Levels;
+using Logicadia.Application.Features.DTOs.Stories;
 using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Common;
 using Logicadia.Domain.Entities;
+using Logicadia.Infrastructure.Data;
 using Logicadia.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LOGICADIA.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logicadia.Infrastructure.Services
 {
@@ -17,17 +16,28 @@ namespace Logicadia.Infrastructure.Services
     {
         private readonly ILevelRepository _repo;
         private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _context;
 
-        public LevelService(ILevelRepository repo, IMapper mapper)
+        public LevelService(ILevelRepository repo, IMapper mapper, ApplicationDbContext context)
         {
             _repo = repo;
             _mapper = mapper;
+            _context = context;
         }
+
+        // ============ Admin ============
 
         public async Task<IEnumerable<LevelAdminDto>> GetAllForAdminAsync()
         {
             var levels = await _repo.GetAllAsync();
             return _mapper.Map<IEnumerable<LevelAdminDto>>(levels);
+        }
+
+        public async Task<LevelAdminDto?> GetByIdForAdminAsync(int id)
+        {
+            var level = await _repo.GetByIdAsync(id);
+            if (level is null) return null;
+            return _mapper.Map<LevelAdminDto>(level);
         }
 
         public async Task<PagedResult<LevelAdminDto>> GetPagedForAdminAsync(PaginationParams pagination)
@@ -41,18 +51,14 @@ namespace Logicadia.Infrastructure.Services
                 PageSize = pagination.PageSize
             };
         }
-        public async Task<LevelAdminDto?> GetByIdForAdminAsync(int id)
-        {
-            var level = await _repo.GetByIdAsync(id);
-            if (level is null) return null;
-            return _mapper.Map<LevelAdminDto>(level);
-        }
+
         public async Task<LevelAdminDto> CreateAsync(CreateLevelDto dto)
         {
             var level = _mapper.Map<Level>(dto);
             await _repo.AddAsync(level);
             return _mapper.Map<LevelAdminDto>(level);
         }
+
         public async Task<LevelAdminDto> UpdateAsync(int id, UpdateLevelDto dto)
         {
             var level = await _repo.GetByIdAsync(id);
@@ -69,5 +75,126 @@ namespace Logicadia.Infrastructure.Services
             await _repo.DeleteAsync(level);
         }
 
+        // ============ User ============
+
+        public async Task<List<LevelDTO>> GetAllLevelsAsync(int userId)
+        {
+            var levels = await _context.Levels
+                .OrderBy(l => l.OrderIndex)
+                .ToListAsync();
+
+            var userProgress = await _context.UserProgress
+                .Where(p => p.UserId == userId)
+                .Select(p => p.Scenario.Story.LevelId)
+                .Distinct()
+                .ToListAsync();
+
+            return levels.Select((l, index) =>
+            {
+                bool isUnlocked = index == 0 || userProgress.Contains(l.Id);
+                var firstLevelProgress = _context.UserProgress
+                    .Where(p => p.UserId == userId && p.Scenario.Story.LevelId == l.Id)
+                    .OrderByDescending(p => p.CompletedAt)
+                    .FirstOrDefault();
+
+                return new LevelDTO
+                {
+                    Id = l.Id,
+                    Title = l.Title,
+                    Description = l.Description,
+                    OrderIndex = l.OrderIndex,
+                    XpReward = l.XpReward,
+                    IsUnlocked = isUnlocked,
+                    UnlockedAt = firstLevelProgress?.CompletedAt
+                };
+            }).ToList();
+        }
+
+        public async Task<LevelDetailDTO?> GetLevelByIdAsync(int levelId, int userId)
+        {
+            var level = await _context.Levels
+                .Include(l => l.Stories.OrderBy(s => s.OrderIndex))
+                .ThenInclude(s => s.Scenarios.OrderBy(sc => sc.OrderIndex))
+                .FirstOrDefaultAsync(l => l.Id == levelId);
+
+            if (level == null)
+                return null;
+
+            var firstLevelId = await _context.Levels
+                .OrderBy(l => l.OrderIndex)
+                .Select(l => l.Id)
+                .FirstOrDefaultAsync();
+
+            bool isUnlocked;
+
+            if (level.Id == firstLevelId)
+            {
+                isUnlocked = true;
+            }
+            else
+            {
+                var previousLevelId = await _context.Levels
+                    .Where(l => l.OrderIndex < level.OrderIndex)
+                    .OrderByDescending(l => l.OrderIndex)
+                    .Select(l => l.Id)
+                    .FirstOrDefaultAsync();
+
+                isUnlocked = await _context.UserProgress
+                    .AnyAsync(p =>
+                        p.UserId == userId &&
+                        p.Scenario.Story.LevelId == previousLevelId
+                    );
+            }
+
+            if (!isUnlocked)
+                return null;
+
+            var completedScenarios = await _context.UserProgress
+                .Where(p =>
+                    p.UserId == userId &&
+                    p.Scenario.Story.LevelId == levelId
+                )
+                .Select(p => p.ScenarioId)
+                .ToListAsync();
+
+            return new LevelDetailDTO
+            {
+                Id = level.Id,
+                Title = level.Title,
+                Description = level.Description,
+                OrderIndex = level.OrderIndex,
+                XpReward = level.XpReward,
+                IsUnlocked = true,
+
+                Stories = level.Stories.Select(s => new StoryDTO
+                {
+                    Id = s.Id,
+                    LevelId = s.LevelId,
+                    Title = s.Title,
+                    NarrativeText = s.NarrativeText,
+                    OrderIndex = s.OrderIndex,
+                    IsCompleted = s.Scenarios.All(sc => completedScenarios.Contains(sc.Id))
+                }).ToList()
+            };
+        }
+
+        public async Task<bool> IsLevelUnlockedAsync(int levelId, int userId)
+        {
+            var level = await _context.Levels.FindAsync(levelId);
+            if (level == null) return false;
+
+            if (level.OrderIndex == 0) return true;
+
+            var previousLevelId = await _context.Levels
+                .Where(l => l.OrderIndex == level.OrderIndex - 1)
+                .Select(l => l.Id)
+                .FirstOrDefaultAsync();
+
+            if (previousLevelId == 0) return false;
+
+            return await _context.UserProgress
+                .Where(p => p.UserId == userId && p.Scenario.Story.LevelId == previousLevelId)
+                .AnyAsync();
+        }
     }
 }

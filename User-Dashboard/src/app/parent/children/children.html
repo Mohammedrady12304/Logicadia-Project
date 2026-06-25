@@ -1,0 +1,119 @@
+<div class="dashboard-container">
+
+
+  <div class="dashboard-header">
+    <h4 class="dashboard-title">My Children</h4>
+  </div>
+
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-light"></div>
+  </div>
+
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert-box">
+    {{ errorMessage }}
+  </div>
+
+
+
+  <!-- Children Grid -->
+  <div class="children-grid"
+       *ngIf="!isLoading && children.length > 0">
+
+
+    <div class="child-card"
+         *ngFor="let child of children">
+
+
+      <div class="child-avatar">
+        {{ child.name.charAt(0) }}
+      </div>
+
+
+      <h5 class="child-name">
+        {{ child.name }}
+      </h5>
+
+
+      <p class="child-age">
+        Age: {{ child.age }}
+      </p>
+
+
+
+      <div class="child-stats">
+
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Current Level
+          </span>
+
+          <span class="stat-value">
+            {{ child.currentLevelName }}
+          </span>
+
+        </div>
+
+
+
+        <div class="stat">
+
+          <span class="stat-label">
+            Achievements
+          </span>
+
+          <span class="stat-value">
+            🏆 {{ child.totalAchievements }}
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div class="child-actions">
+
+
+        <button
+          class="btn-progress"
+          (click)="viewProgress(child.id)">
+          View Progress
+        </button>
+
+
+        <button
+          class="btn-assign"
+          (click)="assignPath(child.id)">
+          Assign Path
+        </button>
+
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+
+
+
+  <!-- Empty State -->
+  <div
+    *ngIf="!isLoading && children.length === 0"
+    class="empty-state">
+
+    No children added yet.
+
+  </div>
+
+
+</div>

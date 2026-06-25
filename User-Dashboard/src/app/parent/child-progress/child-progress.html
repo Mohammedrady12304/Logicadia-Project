@@ -1,0 +1,211 @@
+<div class="dashboard-container">
+
+
+  <!-- Back -->
+  <button class="back-btn" (click)="goBack()">
+    ← Back
+  </button>
+
+
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-light"></div>
+  </div>
+
+
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert-box">
+    {{ errorMessage }}
+  </div>
+
+
+
+
+
+  <!-- Progress Content -->
+  <div *ngIf="!isLoading && progress">
+
+
+
+    <!-- Header -->
+    <div class="child-header">
+
+      <div class="child-avatar">
+        {{ progress.childName.charAt(0) }}
+      </div>
+
+
+      <div>
+
+        <h4 class="child-name">
+          {{ progress.childName }}
+        </h4>
+
+
+        <p class="child-subtitle">
+          Learning Progress
+        </p>
+
+
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+    <!-- Current Progress -->
+    <div class="progress-grid">
+
+
+
+      <div class="progress-card">
+
+        <span class="progress-label">
+          Current Level
+        </span>
+
+
+        <span class="progress-value">
+          {{ progress.currentLevelName }}
+        </span>
+
+      </div>
+
+
+
+
+
+
+      <div class="progress-card">
+
+        <span class="progress-label">
+          Current Story
+        </span>
+
+
+        <span class="progress-value">
+          {{ progress.currentStoryTitle || 'Not started' }}
+        </span>
+
+      </div>
+
+
+
+
+
+
+      <div class="progress-card">
+
+        <span class="progress-label">
+          Current Scenario
+        </span>
+
+
+        <span class="progress-value">
+          {{ progress.currentScenarioName || 'Not started' }}
+        </span>
+
+      </div>
+
+
+
+
+
+
+      <div class="progress-card">
+
+        <span class="progress-label">
+          Achievements
+        </span>
+
+
+        <span class="progress-value">
+          🏆 {{ progress.unlockedAchievements?.length || 0 }}
+        </span>
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- Achievements -->
+
+    <div
+      class="achievements-section"
+      *ngIf="progress?.unlockedAchievements?.length">
+
+
+
+      <h5 class="section-title">
+        Unlocked Achievements
+      </h5>
+
+
+
+
+      <div class="achievements-list">
+
+
+
+        <div
+          class="achievement-badge"
+          *ngFor="let achievement of progress?.unlockedAchievements">
+
+
+          🏅 {{ achievement }}
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Assign Path Button -->
+
+    <button
+      class="btn-assign"
+      (click)="assignPath()">
+
+
+      Assign Learning Path
+
+
+    </button>
+
+
+
+
+  </div>
+
+
+
+</div>

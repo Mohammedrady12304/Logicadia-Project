@@ -4,12 +4,10 @@ using Logicadia.Application.Features.DTOs.Choice;
 using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Common;
 using Logicadia.Domain.Entities;
+using Logicadia.Infrastructure.Data;
 using Logicadia.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using LOGICADIA.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace Logicadia.Infrastructure.Services
 {
@@ -17,11 +15,22 @@ namespace Logicadia.Infrastructure.Services
     {
         private readonly IChoiceRepository _repo;
         private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _context;
+        private readonly IAchievementEngine _achievementEngine;
+        private readonly ILevelUnlockService _levelUnlockService;
 
-        public ChoiceService(IChoiceRepository repo, IMapper mapper)
+        public ChoiceService(
+            IChoiceRepository repo,
+            IMapper mapper,
+            ApplicationDbContext context,
+            IAchievementEngine achievementEngine,
+            ILevelUnlockService levelUnlockService)
         {
             _repo = repo;
             _mapper = mapper;
+            _context = context;
+            _achievementEngine = achievementEngine;
+            _levelUnlockService = levelUnlockService;
         }
 
         // ============ Admin ============
@@ -29,11 +38,6 @@ namespace Logicadia.Infrastructure.Services
         public async Task<IEnumerable<ChoiceAdminDto>> GetAllForAdminAsync()
         {
             var choices = await _repo.GetAllAsync();
-            return _mapper.Map<IEnumerable<ChoiceAdminDto>>(choices);
-        }
-        public async Task<IEnumerable<ChoiceAdminDto>> GetByScenarioIdForAdminAsync(int scenarioId)
-        {
-            var choices = await _repo.GetByScenarioIdAsync(scenarioId);
             return _mapper.Map<IEnumerable<ChoiceAdminDto>>(choices);
         }
 
@@ -44,20 +48,12 @@ namespace Logicadia.Infrastructure.Services
             return _mapper.Map<ChoiceAdminDto>(choice);
         }
 
-        public async Task<ChoiceAdminDto> CreateAsync(CreateChoiceDto dto)
+        public async Task<IEnumerable<ChoiceAdminDto>> GetByScenarioIdForAdminAsync(int scenarioId)
         {
-            var choice = _mapper.Map<Choice>(dto);
-            await _repo.AddAsync(choice);
-            return _mapper.Map<ChoiceAdminDto>(choice);
+            var choices = await _repo.GetByScenarioIdAsync(scenarioId);
+            return _mapper.Map<IEnumerable<ChoiceAdminDto>>(choices);
         }
-        public async Task<ChoiceAdminDto> UpdateAsync(int id, UpdateChoiceDto dto)
-        {
-            var choice = await _repo.GetByIdAsync(id);
-            if (choice is null) throw new NotFoundException(nameof(Choice), id);
-            _mapper.Map(dto, choice);
-            await _repo.UpdateAsync(choice);
-            return _mapper.Map<ChoiceAdminDto>(choice);
-        }
+
         public async Task<PagedResult<ChoiceAdminDto>> GetPagedForAdminAsync(PaginationParams pagination)
         {
             var (data, totalCount) = await _repo.GetPagedAsync(pagination.PageNumber, pagination.PageSize);
@@ -81,6 +77,23 @@ namespace Logicadia.Infrastructure.Services
                 PageSize = pagination.PageSize
             };
         }
+
+        public async Task<ChoiceAdminDto> CreateAsync(CreateChoiceDto dto)
+        {
+            var choice = _mapper.Map<Choice>(dto);
+            await _repo.AddAsync(choice);
+            return _mapper.Map<ChoiceAdminDto>(choice);
+        }
+
+        public async Task<ChoiceAdminDto> UpdateAsync(int id, UpdateChoiceDto dto)
+        {
+            var choice = await _repo.GetByIdAsync(id);
+            if (choice is null) throw new NotFoundException(nameof(Choice), id);
+            _mapper.Map(dto, choice);
+            await _repo.UpdateAsync(choice);
+            return _mapper.Map<ChoiceAdminDto>(choice);
+        }
+
         public async Task DeleteAsync(int id)
         {
             var choice = await _repo.GetByIdAsync(id);
@@ -89,5 +102,67 @@ namespace Logicadia.Infrastructure.Services
         }
 
         // ============ User ============
+
+        public async Task<ChoiceSubmitResponse> SubmitChoiceAsync(int userId, int scenarioId, int choiceId)
+        {
+            var choice = await _context.Choices.FindAsync(choiceId);
+            if (choice == null || choice.ScenarioId != scenarioId)
+                throw new InvalidOperationException("Invalid choice selection");
+
+            var scenario = await _context.Scenarios
+                .Include(s => s.Story)
+                .FirstOrDefaultAsync(s => s.Id == scenarioId);
+            if (scenario == null)
+                throw new InvalidOperationException("Scenario not found");
+
+            var existingProgress = await _context.UserProgress
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.ScenarioId == scenarioId);
+            if (existingProgress != null)
+                throw new InvalidOperationException("Scenario already completed");
+
+            var xpEarned = choice.IsCorrect ? choice.XpValue : choice.XpValue / 2;
+
+            var userProgress = new UserProgress
+            {
+                UserId = userId,
+                ScenarioId = scenarioId,
+                ChosenChoiceId = choiceId,
+                IsCorrect = choice.IsCorrect,
+                XpEarned = xpEarned,
+                CompletedAt = DateTime.UtcNow
+            };
+
+            _context.UserProgress.Add(userProgress);
+
+            var levelUnlocked = await _levelUnlockService.CheckAndUnlockNextLevelAsync(userId, scenario.Story.LevelId);
+            var achievementsUnlocked = await _achievementEngine.CheckAndUnlockAchievementsAsync(userId);
+
+            await _context.SaveChangesAsync();
+
+            return new ChoiceSubmitResponse
+            {
+                IsCorrect = choice.IsCorrect,
+                XpEarned = xpEarned,
+                Feedback = choice.Feedback,
+                LevelUnlocked = levelUnlocked,
+                AchievementsUnlocked = achievementsUnlocked
+            };
+        }
+
+        public async Task<List<ChoiceDTO>> GetChoicesByScenarioAsync(int scenarioId)
+        {
+            return await _context.Choices
+                .Where(c => c.ScenarioId == scenarioId)
+                .OrderBy(c => c.Id)
+                .Select(c => new ChoiceDTO
+                {
+                    Id = c.Id,
+                    ChoiceText = c.ChoiceText,
+                    IsCorrect = c.IsCorrect,
+                    Feedback = c.Feedback,
+                    XpValue = c.XpValue
+                })
+                .ToListAsync();
+        }
     }
 }

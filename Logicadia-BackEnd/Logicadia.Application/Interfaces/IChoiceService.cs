@@ -21,5 +21,7 @@ namespace Logicadia.Application.Interfaces
         Task DeleteAsync(int id);
 
         // User
+        Task<ChoiceSubmitResponse> SubmitChoiceAsync(int userId, int scenarioId, int choiceId);
+        Task<List<ChoiceDTO>> GetChoicesByScenarioAsync(int scenarioId);
     }
 }

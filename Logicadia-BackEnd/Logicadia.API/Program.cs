@@ -1,4 +1,3 @@
-
 using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Entities;
 using Logicadia.Infrastructure.Data;
@@ -8,41 +7,47 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using System.Text;
 
 namespace Logicadia.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
             // Controllers
             builder.Services.AddControllers();
-            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+
+            // ✅ استخدام AddIdentityCore بدل AddIdentity عشان متتعارضيش مع JWT
+            builder.Services.AddIdentityCore<ApplicationUser>()
+                .AddRoles<ApplicationRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            // CORS
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("AllowAll",
-                    builder => builder.AllowAnyOrigin()
-                                      .AllowAnyMethod()
-                                      .AllowAnyHeader());
+                options.AddPolicy("AllowAngular", policy =>
+                {
+                    policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod();
+                });
             });
-            // JWT Authentication
+
+            // JWT Config
             var jwtKey = builder.Configuration["Jwt:Key"];
             var jwtIssuer = builder.Configuration["Jwt:Issuer"];
             var jwtAudience = builder.Configuration["Jwt:Audience"];
 
-
+            // ✅ JWT Authentication من غير تعارض مع Identity
             builder.Services.AddAuthentication(options =>
             {
-                options.DefaultAuthenticateScheme =
-                    JwtBearerDefaults.AuthenticationScheme;
-
-                options.DefaultChallengeScheme =
-                    JwtBearerDefaults.AuthenticationScheme;
-
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(options =>
             {
@@ -56,18 +61,17 @@ namespace Logicadia.API
                     ValidIssuer = jwtIssuer,
                     ValidAudience = jwtAudience,
 
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!))
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(jwtKey!)),
+
+                    RoleClaimType = ClaimTypes.Role
                 };
 
-                
                 options.Events = new JwtBearerEvents
                 {
                     OnChallenge = context =>
                     {
-                        
                         context.HandleResponse();
-
-                        
                         context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                         context.Response.ContentType = "application/json";
 
@@ -79,19 +83,16 @@ namespace Logicadia.API
                         return context.Response.WriteAsync(errorMessage);
                     }
                 };
-
             });
 
-
-            // AutoMapper
+            // AutoMapper - 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Auth Services
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IJwtProvider, JwtProvider>();
 
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            //builder.Services.AddOpenApi();
+            // Swagger
             builder.Services.AddSwaggerGen(c =>
             {
                 c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
@@ -105,25 +106,31 @@ namespace Logicadia.API
                 });
 
                 c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
-    {
-        {
-            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-            {
-                Reference = new Microsoft.OpenApi.Models.OpenApiReference
                 {
-                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
-                    Id = "Bearer"
-                }
-            },
-            new string[] {}
-        }
-    });
-            }); builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            builder.Services.AddScoped<IUserService, UserService>();
-            builder.Services.AddScoped<ILevelRepository, LevelRepository>();
+                    {
+                        new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                        {
+                            Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                            {
+                                Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
+
+            // Other Services
             builder.Services.AddScoped<ILevelService, LevelService>();
+            builder.Services.AddScoped<IUserProgressService, UserProgressService>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ILevelUnlockService, LevelUnlockService>();
+            builder.Services.AddScoped<IScoreService, ScoreService>();
+            builder.Services.AddScoped<ILevelRepository, LevelRepository>();
             builder.Services.AddScoped<IStoryRepository, StoryRepository>();
             builder.Services.AddScoped<IStoryService, StoryService>();
+            builder.Services.AddScoped<IAchievementEngine, AchievementEngine>();
             builder.Services.AddScoped<IScenarioRepository, ScenarioRepository>();
             builder.Services.AddScoped<IScenarioService, ScenarioService>();
             builder.Services.AddScoped<IChoiceRepository, ChoiceRepository>();
@@ -131,22 +138,19 @@ namespace Logicadia.API
             builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();
             builder.Services.AddScoped<IAchievementService, AchievementService>();
             builder.Services.AddScoped<IParentDashboardService, ParentDashboardService>();
+
+            // Database
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection"),
-         b => b.MigrationsAssembly("Logicadia.Infrastructure")
-        ));
+                options.UseSqlServer(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    b => b.MigrationsAssembly("Logicadia.Infrastructure")
+                ));
 
-
-            
-            //builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>()
-            //    .AddDefaultTokenProviders(); 
             var app = builder.Build();
-            app.UseCors("AllowAll");
 
+            // CORS لازم قبل أي حاجة
+            app.UseCors("AllowAngular");
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -156,51 +160,52 @@ namespace Logicadia.API
 
             app.UseHttpsRedirection();
 
+            // ✅ الترتيب مهم جداً — Authentication الأول
             app.UseAuthentication();
             app.UseAuthorization();
-            // Seed Admin
+
+            // ✅ Seed Admin باستخدام UserManager بدل BCrypt مباشرة
             using (var scope = app.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
-
                 try
                 {
-                    var context =
-                        services.GetRequiredService<ApplicationDbContext>();
+                    var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<ApplicationRole>>();
 
-                    if (!context.Users.Any(u =>
-                        u.Email == "admin@logicadia.com"))
+                    // إنشاء Role لو مش موجودة
+                    if (!await roleManager.RoleExistsAsync("Admin"))
+                    {
+                        await roleManager.CreateAsync(new ApplicationRole { Name = "Admin" });
+                    }
+
+                    // إنشاء Admin لو مش موجود
+                    if (await userManager.FindByEmailAsync("admin@logicadia.com") == null)
                     {
                         var adminUser = new ApplicationUser
                         {
                             Name = "Admin",
-                            UserName = "ِAdmin",
+                            UserName = "Admin",
                             Email = "admin@logicadia.com",
-                            PasswordHash =
-                                BCrypt.Net.BCrypt.HashPassword(
-                                    "admin123"
-                                ),
-
                             RoleId = 1,
-
                             CreatedAt = DateTime.UtcNow
                         };
 
+                        var result = await userManager.CreateAsync(adminUser, "admin123");
 
-                        context.Users.Add(adminUser);
-
-                        context.SaveChanges();
+                        if (result.Succeeded)
+                        {
+                            await userManager.AddToRoleAsync(adminUser, "Admin");
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(
-                        $"Error during Admin Seeding: {ex.Message}"
-                    );
+                    Console.WriteLine($"Error during Admin Seeding: {ex.Message}");
                 }
             }
-            app.MapControllers();
 
+            app.MapControllers();
             app.Run();
         }
     }

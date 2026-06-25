@@ -2,7 +2,7 @@ using Logicadia.Domain.Entities;
 using Logicadia.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Logicadia.Infrastructure.Services.Services
+namespace Logicadia.Infrastructure.Services
 {
     public interface ILevelUnlockService
     {

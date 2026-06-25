@@ -1,0 +1,314 @@
+.dashboard-container {
+  background: linear-gradient(135deg, #1a1654, #12103d);
+  min-height: 100vh;
+  padding: 40px 30px;
+  font-family: var(--font-sans);
+}
+
+
+/* Header */
+
+.dashboard-header {
+  margin-bottom: 35px;
+}
+
+.dashboard-title {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+
+/* Error */
+
+.alert-box {
+  background: rgba(240, 153, 123, 0.15);
+  border: 1px solid rgba(240, 153, 123, 0.3);
+  color: #f0997b;
+  padding: 14px 18px;
+  border-radius: 16px;
+}
+
+
+/* Grid */
+
+.children-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  gap: 25px;
+  justify-content: center;
+}
+
+/* Card */
+
+.child-card {
+  background: rgba(34, 29, 94, 0.85);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(123, 110, 246, 0.15);
+
+  border-radius: 24px;
+
+  padding: 28px;
+
+  text-align: center;
+
+  position: relative;
+
+  overflow: hidden;
+
+  transition: all 0.35s ease;
+}
+
+
+/* glow effect */
+
+.child-card::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  background: #7b6ef6;
+
+  opacity: 0.15;
+
+  border-radius: 50%;
+
+  top: -50px;
+  right: -50px;
+
+}
+
+
+/* hover */
+
+.child-card:hover {
+
+  transform: translateY(-8px);
+
+  border-color: #7b6ef6;
+
+  box-shadow:
+  0 15px 35px rgba(123,110,246,0.25);
+
+}
+
+
+/* Avatar */
+
+.child-avatar {
+
+  width: 75px;
+  height: 75px;
+
+  border-radius: 50%;
+
+  background:
+  linear-gradient(135deg,#8b7cff,#5c4eea);
+
+  color:white;
+
+  font-size:30px;
+
+  font-weight:600;
+
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+
+  margin:0 auto 18px;
+
+
+  box-shadow:
+  0 10px 25px rgba(123,110,246,.4);
+
+}
+
+
+/* Name */
+
+.child-name {
+
+  color:#fff;
+
+  font-size:20px;
+
+  font-weight:600;
+
+  margin-bottom:6px;
+
+}
+
+
+.child-age {
+
+  color:#aaa6dc;
+
+  font-size:14px;
+
+  margin-bottom:20px;
+
+}
+
+
+/* Stats */
+
+.child-stats {
+
+  display:flex;
+
+  justify-content:space-between;
+
+  background:#191551;
+
+  border-radius:16px;
+
+  padding:15px;
+
+  margin-bottom:22px;
+
+}
+
+
+.stat {
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:6px;
+
+}
+
+
+.stat-label {
+
+  color:#7773b5;
+
+  font-size:12px;
+
+}
+
+
+.stat-value {
+
+  color:#ffffff;
+
+  font-size:14px;
+
+  font-weight:600;
+
+}
+
+
+/* Buttons */
+
+.child-actions {
+
+  display:flex;
+
+  gap:12px;
+
+}
+
+
+.btn-progress,
+.btn-assign {
+
+
+  flex:1;
+
+  padding:12px;
+
+  border-radius:14px;
+
+  font-size:14px;
+
+  font-weight:500;
+
+  cursor:pointer;
+
+  transition:.3s;
+
+}
+
+
+/* primary button */
+
+.btn-progress {
+
+  background:
+  linear-gradient(135deg,#8b7cff,#6757ed);
+
+  color:white;
+
+  border:none;
+
+
+  box-shadow:
+  0 8px 20px rgba(123,110,246,.35);
+
+}
+
+
+.btn-progress:hover {
+
+  transform:scale(1.05);
+
+}
+
+
+/* secondary */
+
+.btn-assign {
+
+  background:#29256c;
+
+  color:#d5d2ff;
+
+  border:1px solid #45418b;
+
+}
+
+
+.btn-assign:hover {
+
+  background:#3a3680;
+
+  color:white;
+
+}
+
+
+/* Empty */
+
+.empty-state {
+
+  color:#7773b5;
+
+  text-align:center;
+
+  padding:50px;
+
+  font-size:15px;
+
+}
+
+
+/* Loading */
+
+.spinner-border {
+
+  width:3rem;
+  height:3rem;
+
+}
