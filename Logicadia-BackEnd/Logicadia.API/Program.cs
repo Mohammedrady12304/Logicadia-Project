@@ -19,6 +19,9 @@ namespace Logicadia.API
             var builder = WebApplication.CreateBuilder(args);
             // Controllers
             builder.Services.AddControllers();
+            builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowAll",
@@ -43,22 +46,40 @@ namespace Logicadia.API
             })
             .AddJwtBearer(options =>
             {
-                options.TokenValidationParameters =
-                    new TokenValidationParameters
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+
+                    ValidIssuer = jwtIssuer,
+                    ValidAudience = jwtAudience,
+
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!))
+                };
+
+                
+                options.Events = new JwtBearerEvents
+                {
+                    OnChallenge = context =>
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
+                        
+                        context.HandleResponse();
 
-                        ValidIssuer = jwtIssuer,
-                        ValidAudience = jwtAudience,
+                        
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        context.Response.ContentType = "application/json";
 
-                        IssuerSigningKey =
-                            new SymmetricSecurityKey(
-                                Encoding.UTF8.GetBytes(jwtKey!)
-                            )
-                    };
+                        var errorMessage = System.Text.Json.JsonSerializer.Serialize(new
+                        {
+                            message = "You are not authorized to access this resource."
+                        });
+
+                        return context.Response.WriteAsync(errorMessage);
+                    }
+                };
+
             });
 
 
@@ -99,7 +120,6 @@ namespace Logicadia.API
     });
             }); builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddScoped<IUserService, UserService>();
-
             builder.Services.AddScoped<ILevelRepository, LevelRepository>();
             builder.Services.AddScoped<ILevelService, LevelService>();
             builder.Services.AddScoped<IStoryRepository, StoryRepository>();
@@ -110,6 +130,7 @@ namespace Logicadia.API
             builder.Services.AddScoped<IChoiceService, ChoiceService>();
             builder.Services.AddScoped<IAchievementRepository, AchievementRepository>();
             builder.Services.AddScoped<IAchievementService, AchievementService>();
+            builder.Services.AddScoped<IParentDashboardService, ParentDashboardService>();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -117,6 +138,7 @@ namespace Logicadia.API
         ));
 
 
+            
             //builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
             //    .AddEntityFrameworkStores<ApplicationDbContext>()
             //    .AddDefaultTokenProviders(); 

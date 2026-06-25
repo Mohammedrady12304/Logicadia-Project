@@ -34,7 +34,7 @@ namespace Logicadia.API.Controllers
 
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
-            var result = await _authService.RegisterChildAsync(dto, userIdClaim);
+            var result = await _authService.RegisterChildAsync(dto, int.Parse(userIdClaim));
             if (!result.IsSuccess) return BadRequest(result.Message);
             return Ok(result);
         }
