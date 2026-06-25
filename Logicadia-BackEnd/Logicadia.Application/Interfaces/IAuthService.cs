@@ -11,6 +11,6 @@ namespace Logicadia.Application.Interfaces
     {
         Task<AuthResultDto> LoginAsync(LoginDto loginDto);
         Task<AuthResultDto> RegisterParentAsync(RegisterParentDto dto);
-        Task<AuthResultDto> RegisterChildAsync(RegisterChildDto dto, string parentUserId);
+        Task<AuthResultDto> RegisterChildAsync(RegisterChildDto dto,int parentUserId);
     }
 }

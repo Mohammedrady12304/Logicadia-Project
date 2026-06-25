@@ -9,7 +9,8 @@ namespace Logicadia.Domain.Entities
         public int UserId { get; set; }
         public int AchievementId { get; set; }
         public DateTime EarnedAt { get; set; } = DateTime.UtcNow;
-
+        public int ChildId { get; set; }
+        public Child Child { get; set; }
         // Navigation
         public virtual ApplicationUser User { get; set; } = null!;
         public virtual Achievement Achievement { get; set; } = null!;
