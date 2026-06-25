@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { LevelService } from '../../core/services/level.service';
 import { LevelDto } from '../../core/models/level.models';
+import { NavBar } from '../../core/shared/nav-bar/nav-bar';
 @Component({
   selector: 'app-level-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavBar],
   templateUrl: './level-list.html',
   styleUrl: './level-list.css'
 })

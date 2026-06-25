@@ -1,0 +1,256 @@
+/* Root colors */
+:root {
+  --navy-dark: #0F0B2D;
+  --navy-light: #1a1647;
+  --purple-accent: #7C3AED;
+  --purple-light: #A78BFA;
+  --white: #FFFFFF;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+}
+
+
+
+/* Main Container */
+.main-container {
+  background-color: #070c5d;
+  min-height: 100vh;
+  padding-top: 80px;
+  position: relative;
+}
+
+/* Floating orbs */
+.orbs {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb-1 {
+  position: absolute;
+  top: 80px;
+  left: 40px;
+  width: 128px;
+  height: 128px;
+  background-color: rgba(124, 58, 237, 0.2);
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.orb-2 {
+  position: absolute;
+  bottom: 160px;
+  right: 80px;
+  width: 160px;
+  height: 160px;
+  background-color: rgba(124, 58, 237, 0.1);
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+/* Content */
+.content-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Section */
+.hero-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .hero-section {
+    padding: 6rem 1.5rem 3rem;
+  }
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-title {
+    font-size: 3.75rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: #D1D5DB;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .hero-subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+/* Features Section */
+.features-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.feature-card {
+  background: #7c3aed;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.feature-card:hover {
+  background: #7d5ff7;
+  box-shadow: 0 20px 25px -5px rgba(111, 81, 239, 0.5);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon svg {
+  width: 64px;
+  height: 64px;
+color: #FFFFFF;
+}
+
+.feature-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+
+.feature-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Dreamers Section */
+.dreamers-section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+  margin-top: 3rem;
+}
+
+.dreamers-container {
+  background: linear-gradient(to right, #7d5ff7, transparent);
+  border-radius: 1.5rem;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+}
+
+.dreamers-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+  .dreamers-title {
+    font-size: 2.25rem;
+  }
+}
+
+.dreamers-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .dreamers-content {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.dreamers-avatars {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(to bottom right, var(--purple-light), var(--purple-accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.125rem;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(124, 58, 237, 0.5);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.social-button:hover {
+  background-color: rgba(124, 58, 237, 0.5);
+}
+
+.social-button svg {
+  width: 24px;
+  height: 24px;
+}

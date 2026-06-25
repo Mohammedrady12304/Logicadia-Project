@@ -1,0 +1,160 @@
+:root {
+  --navy-dark: #0F0B2D;
+  --navy-light: #1a1647;
+  --purple-accent: #7C3AED;
+  --purple-light: #A78BFA;
+  --white: #FFFFFF;
+  --gray-300: #D1D5DB;
+  --gray-400: #9CA3AF;
+}
+
+/* ===== PAGE BACKGROUND ===== */
+:host {
+  display: block;
+  min-height: 100vh;
+  padding: 30px;
+  color: var(--white);
+  background: radial-gradient(circle at top, #1a1647, #0F0B2D);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== GLASS CARD (LEVEL) ===== */
+.card {
+  background: rgba(26, 22, 71, 0.55);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  backdrop-filter: blur(18px);
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.25);
+}
+
+/* ===== BACK BUTTON ===== */
+.btn-link {
+  color: var(--purple-light);
+  transition: 0.3s;
+}
+
+.btn-link:hover {
+  color: var(--white);
+  transform: translateX(-4px);
+}
+
+/* ===== XP BADGE (GLOW EFFECT) ===== */
+.badge.bg-warning {
+  background: linear-gradient(135deg, var(--purple-accent), var(--purple-light)) !important;
+  color: white;
+  border-radius: 25px;
+  padding: 8px 14px;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
+}
+
+/* ===== SECTION TITLE ===== */
+h5 {
+  color: var(--purple-light);
+  letter-spacing: 1px;
+}
+
+/* ===== STORY LIST ===== */
+.list-group {
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* ===== STORY ITEM ===== */
+.list-group-item {
+  background: rgba(26, 22, 71, 0.45);
+  border: 1px solid rgba(167, 139, 250, 0.1);
+  color: var(--white);
+  padding: 18px;
+  transition: 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover glow line effect */
+.list-group-item::before {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(167,139,250,0.15), transparent);
+  transition: 0.6s;
+}
+
+.list-group-item:hover::before {
+  left: 100%;
+}
+
+.list-group-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.25);
+  border-color: rgba(167, 139, 250, 0.4);
+}
+
+/* ===== SELECTED STORY STATE (اختياري لو هتستخدمي class) ===== */
+.list-group-item.active {
+  background: rgba(124, 58, 237, 0.25) !important;
+  border-left: 4px solid var(--purple-accent);
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+/* ===== LOCKED STORY (لو عندك isLocked) ===== */
+.list-group-item.locked {
+  opacity: 0.4;
+  pointer-events: none;
+  filter: grayscale(0.6);
+}
+
+/* ===== STORY TEXT ===== */
+.fw-medium {
+  font-size: 16px;
+  color: var(--white);
+}
+
+.text-muted {
+  color: var(--gray-300) !important;
+  font-size: 13px;
+}
+
+/* ===== STATUS BADGES ===== */
+.badge.bg-success {
+  background: linear-gradient(135deg, #10b981, #34d399) !important;
+}
+
+.badge.bg-secondary {
+  background: rgba(156, 163, 175, 0.2) !important;
+}
+
+/* ===== EMPTY STATE ===== */
+.text-center.text-muted {
+  color: var(--gray-400) !important;
+}
+
+/* ===== LOADER ===== */
+.spinner-border {
+  color: var(--purple-accent) !important;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  :host {
+    padding: 15px;
+  }
+
+  .list-group-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px;
+  }
+
+  .card {
+    border-radius: 14px;
+  }
+}

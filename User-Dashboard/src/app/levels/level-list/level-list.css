@@ -1,9 +1,10 @@
 .path-container {
   background: #1a1654;
   border-radius: 20px;
-  padding: 24px;
-  min-height: 480px;
+  padding: 100px;
+  /*min-height: 480px;*/
   position: relative;
+  min-height: 100vh;
 }
 
 .header {

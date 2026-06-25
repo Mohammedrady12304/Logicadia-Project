@@ -4,6 +4,7 @@ using Logicadia.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Logicadia.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260623011532_TestMigration")]
+    partial class TestMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -577,9 +580,6 @@ namespace Logicadia.Infrastructure.Migrations
                     b.Property<int>("AchievementId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ChildId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EarnedAt")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -594,8 +594,6 @@ namespace Logicadia.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AchievementId");
-
-                    b.HasIndex("ChildId");
 
                     b.HasIndex("UserId", "AchievementId")
                         .IsUnique()
@@ -612,9 +610,6 @@ namespace Logicadia.Infrastructure.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ChildId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ChosenChoiceId")
                         .HasColumnType("int");
 
@@ -626,13 +621,7 @@ namespace Logicadia.Infrastructure.Migrations
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
 
-                    b.Property<int>("LevelId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ScenarioId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -643,18 +632,12 @@ namespace Logicadia.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ChildId");
-
                     b.HasIndex("ChosenChoiceId");
 
                     b.HasIndex("CompletedAt")
                         .HasDatabaseName("IX_UserProgress_CompletedAt");
 
-                    b.HasIndex("LevelId");
-
                     b.HasIndex("ScenarioId");
-
-                    b.HasIndex("StoryId");
 
                     b.HasIndex("UserId")
                         .HasDatabaseName("IX_UserProgress_UserId");
@@ -898,12 +881,6 @@ namespace Logicadia.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Logicadia.Domain.Entities.Child", "Child")
-                        .WithMany()
-                        .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Logicadia.Domain.Entities.ApplicationUser", "User")
                         .WithMany("UserAchievements")
                         .HasForeignKey("UserId")
@@ -912,29 +889,15 @@ namespace Logicadia.Infrastructure.Migrations
 
                     b.Navigation("Achievement");
 
-                    b.Navigation("Child");
-
                     b.Navigation("User");
                 });
 
             modelBuilder.Entity("Logicadia.Domain.Entities.UserProgress", b =>
                 {
-                    b.HasOne("Logicadia.Domain.Entities.Child", "Child")
-                        .WithMany()
-                        .HasForeignKey("ChildId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Logicadia.Domain.Entities.Choice", "ChosenChoice")
                         .WithMany("UserProgresses")
                         .HasForeignKey("ChosenChoiceId")
                         .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Logicadia.Domain.Entities.Level", "Level")
-                        .WithMany()
-                        .HasForeignKey("LevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Logicadia.Domain.Entities.Scenario", "Scenario")
@@ -943,25 +906,15 @@ namespace Logicadia.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Logicadia.Domain.Entities.Story", "Story")
-                        .WithMany()
-                        .HasForeignKey("StoryId");
-
                     b.HasOne("Logicadia.Domain.Entities.ApplicationUser", "User")
                         .WithMany("Progress")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Child");
-
                     b.Navigation("ChosenChoice");
 
-                    b.Navigation("Level");
-
                     b.Navigation("Scenario");
-
-                    b.Navigation("Story");
 
                     b.Navigation("User");
                 });

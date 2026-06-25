@@ -139,6 +139,9 @@ namespace Logicadia.API
 
 
             
+            //builder.Services.AddIdentity<ApplicationUser, ApplicationRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders(); 
             var app = builder.Build();
             app.UseCors("AllowAll");
 
@@ -171,7 +174,7 @@ namespace Logicadia.API
                         var adminUser = new ApplicationUser
                         {
                             Name = "Admin",
-
+                            UserName = "ِAdmin",
                             Email = "admin@logicadia.com",
                             PasswordHash =
                                 BCrypt.Net.BCrypt.HashPassword(
