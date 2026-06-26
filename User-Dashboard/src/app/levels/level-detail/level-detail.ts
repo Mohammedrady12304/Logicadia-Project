@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LevelService } from '../../core/services/level.service';
 import { LevelDetailDto, StoryDto } from '../../core/models/level.models';
+
 @Component({
   selector: 'app-level-detail',
   imports: [CommonModule],
@@ -17,29 +18,34 @@ export class LevelDetail   implements OnInit{
   constructor(
     private levelService: LevelService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
     const levelId = Number(this.route.snapshot.paramMap.get('id'));
     this.loadLevel(levelId);
   }
-loadLevel(levelId: number) {
+
+  loadLevel(levelId:number) {
     this.isLoading = true;
+
     this.levelService.getLevelById(levelId).subscribe({
       next: (data) => {
         console.log(data);
         this.level = data;
         this.isLoading = false;
+        this.cdr.detectChanges();
       },
-      error: () => {
+      error:()=>{
         this.errorMessage = 'Level not found or not unlocked.';
         this.isLoading = false;
+        this.cdr.detectChanges();
       }
     });
   }
 
-  openStory(story: StoryDto) {
+  openStory(story:StoryDto) {
     this.router.navigate(['/stories', story.id]);
   }
 

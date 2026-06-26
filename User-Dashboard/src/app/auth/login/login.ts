@@ -19,21 +19,35 @@ export class Login {
   constructor(private authService: AuthService, private router: Router) {}
 
   login() {
+    console.log('login called', this.Username, this.Password);
     this.isLoading = true;
     this.errorMessage = '';
 
     this.authService.login(this.Username, this.Password).subscribe({
       next: (response) => {
+        console.log('response', response);
         this.authService.saveToken(response.token, response.role);
-        if (this.authService.isUser()) {
+        console.log('role is:', response.role);
+
+        if (response.role === 'Admin') {
+          console.log('navigating to admin');
+          this.router.navigate(['/admin']);
+        } else if (response.role === 'Parent') {
+          console.log('navigating to parent');
+          this.router.navigate(['/parent/children']);
+        } else if (response.role === 'Child') {
+          console.log('navigating to levels');
           this.router.navigate(['/levels']);
         } else {
-          this.errorMessage = 'You are not authorized to access this dashboard.';
+          console.log('not authorized');
+          this.errorMessage = 'You are not authorized.';
           this.authService.logout();
         }
+
         this.isLoading = false;
       },
-      error: () => {
+      error: (err) => {
+        console.log('error', err);
         this.errorMessage = 'Invalid Username or password.';
         this.isLoading = false;
       }

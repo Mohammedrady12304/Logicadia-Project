@@ -1,17 +1,14 @@
+﻿using Logicadia.Application.Interfaces;
 using Logicadia.Infrastructure.Data;
-using LOGICADIA.DTOs;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Logicadia.Infrastructure.Services.Services
+namespace Logicadia.Infrastructure.Services
 {
-    public interface IScoreService
-    {
-        Task<int> CalculateTotalXpAsync(int userId);
-        Task<int> GetCurrentLevelAsync(int userId);
-        Task<int> GetXpToNextLevelAsync(int userId);
-        Task<double> CalculateAccuracyAsync(int userId);
-    }
-
     public class ScoreService : IScoreService
     {
         private readonly ApplicationDbContext _context;
@@ -28,7 +25,6 @@ namespace Logicadia.Infrastructure.Services.Services
                 .Where(p => p.UserId == userId)
                 .SumAsync(p => p.XpEarned);
         }
-
         public async Task<int> GetCurrentLevelAsync(int userId)
         {
             var totalXp = await CalculateTotalXpAsync(userId);
@@ -42,7 +38,6 @@ namespace Logicadia.Infrastructure.Services.Services
             var xpNeededForCurrentLevel = (currentLevel - 1) * XP_PER_LEVEL;
             return XP_PER_LEVEL - (totalXp - xpNeededForCurrentLevel);
         }
-
         public async Task<double> CalculateAccuracyAsync(int userId)
         {
             var totalAttempts = await _context.UserProgress

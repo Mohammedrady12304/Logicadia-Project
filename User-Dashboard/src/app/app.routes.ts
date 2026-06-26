@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { parentGuard } from './core/guards/parent-guard';
+import { userGuard } from './core/guards/user-guard';
+
 
 export const routes: Routes = [
   {
@@ -9,6 +12,30 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./auth/login/login').then(m => m.Login)
   },
+   {
+    path: 'parent',
+    canActivate: [parentGuard],
+    children: [
+      {
+        path: 'children',
+        loadComponent: () => import('./parent/children/children').then(m => m.Children)
+      },
+      {
+        path: 'child/:id/progress',
+        loadComponent: () => import('./parent/child-progress/child-progress').then(m => m.ChildProgress)
+      },
+      {
+        path: 'child/:id/assign-path',
+        loadComponent: () => import('./parent/assign-path/assign-path').then(m => m.AssignPath)
+      },
+       {
+        path: '',
+        redirectTo: 'children',
+        pathMatch: 'full'
+      }
+    ]
+  },
+      
   {
     path: 'levels',
     loadComponent: () => import('./levels/level-list/level-list').then(m => m.LevelList)

@@ -22,36 +22,42 @@ namespace Logicadia.Infrastructure.Services
             _jwtProvider = jwtProvider;
         }
 
-        // 1. Login
+        
         public async Task<AuthResultDto> LoginAsync(LoginDto loginDto)
         {
             var user = await _context.Users
                 .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Email == loginDto.Username);
+                .FirstOrDefaultAsync(u => u.UserName == loginDto.Username || u.Email == loginDto.Username);
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.PasswordHash))
             {
-                return new AuthResultDto { IsSuccess = false, Message = "Invalid email or password." };
-            
-        }
-        string token = _jwtProvider.GenerateToken(user, user.Role.Name);
+                return new AuthResultDto { IsSuccess = false, Message = "Invalid username/email or password." };
+            }
+
+           
+            if (user.Role == null)
+            {
+                return new AuthResultDto { IsSuccess = false, Message = "User role is not assigned." };
+            }
+
+            string token = _jwtProvider.GenerateToken(user, user.Role.Name);
 
             return new AuthResultDto
             {
-            IsSuccess = true,
+                IsSuccess = true,
                 Message = "Logged in successfully.",
                 Token = token,
                 Role = user.Role.Name
-        };
+            };
         }
 
-        // 2. Register Parent
+        
         public async Task<AuthResultDto> RegisterParentAsync(RegisterParentDto dto)
         {
-            var exists = await _context.Users.AnyAsync(u => u.Email == dto.Username);
+            var exists = await _context.Users.AnyAsync(u => u.UserName == dto.Username || u.Email == dto.Username);
             if (exists)
             {
-                return new AuthResultDto { IsSuccess = false, Message = "This email is already registered." };
+                return new AuthResultDto { IsSuccess = false, Message = "This username/email is already registered." };
             }
 
             var parentRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Parent");
@@ -59,6 +65,7 @@ namespace Logicadia.Infrastructure.Services
             {
                 return new AuthResultDto { IsSuccess = false, Message = "Parent role is not defined in the system." };
             }
+
             var user = new ApplicationUser
             {
                 Name = dto.FullName,
@@ -82,28 +89,31 @@ namespace Logicadia.Infrastructure.Services
 
             _context.Parents.Add(parent);
             await _context.SaveChangesAsync();
+
             return new AuthResultDto { IsSuccess = true, Message = "Parent account registered successfully." };
         }
 
-        // 3. Register Child
-        public async Task<AuthResultDto> RegisterChildAsync(RegisterChildDto dto, string parentUserId)
+       
+        public async Task<AuthResultDto> RegisterChildAsync(RegisterChildDto dto, int parentUserId)
         {
-            if (string.IsNullOrEmpty(parentUserId))
+            if (parentUserId <= 0)
             {
                 return new AuthResultDto { IsSuccess = false, Message = "Unauthorized to add a child." };
             }
 
-            var parent = await _context.Parents.FirstOrDefaultAsync(p => p.UserId == int.Parse(parentUserId));
+            
+            var parent = await _context.Parents.FirstOrDefaultAsync(p => p.UserId == parentUserId);
             if (parent == null)
             {
                 return new AuthResultDto { IsSuccess = false, Message = "Parent account not found." };
             }
 
-            var childExists = await _context.Users.AnyAsync(u => u.Email == dto.Username);
+            var childExists = await _context.Users.AnyAsync(u => u.UserName == dto.Username || u.Email == dto.Username);
             if (childExists)
             {
                 return new AuthResultDto { IsSuccess = false, Message = "Child username is already taken." };
             }
+
             var childRole = await _context.Roles.FirstOrDefaultAsync(r => r.Name == "Child");
             if (childRole == null)
             {

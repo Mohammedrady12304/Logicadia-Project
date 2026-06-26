@@ -1,0 +1,61 @@
+<div class="dashboard-container">
+
+  <button class="back-btn" (click)="goBack()">← Back</button>
+
+  <h4 class="page-title">Assign Learning Path</h4>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-light"></div>
+  </div>
+
+  <!-- Success -->
+  <div *ngIf="successMessage" class="success-box">
+    ✅ {{ successMessage }}
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert-box">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Form -->
+  <div class="form-card" *ngIf="!isLoading">
+
+    <div class="field-group">
+      <label class="field-label">Select Level</label>
+      <select class="field-select" [(ngModel)]="dto.levelId" name="levelId">
+        <option [value]="0" disabled>Choose a level...</option>
+        <option *ngFor="let level of levels" [value]="level.id">
+          {{ level.title }}
+        </option>
+      </select>
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Story ID <span class="optional">(optional)</span></label>
+      <input
+        type="number"
+        class="field-input"
+        placeholder="Enter story ID"
+        [(ngModel)]="dto.storyId"
+        name="storyId">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Scenario ID <span class="optional">(optional)</span></label>
+      <input
+        type="number"
+        class="field-input"
+        placeholder="Enter scenario ID"
+        [(ngModel)]="dto.scenarioId"
+        name="scenarioId">
+    </div>
+
+    <button class="btn-submit" (click)="submit()" [disabled]="isSubmitting">
+      <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+      {{ isSubmitting ? 'Assigning...' : 'Assign Path' }}
+    </button>
+
+  </div>
+</div>

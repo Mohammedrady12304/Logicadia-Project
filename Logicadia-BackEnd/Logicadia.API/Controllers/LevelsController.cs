@@ -1,8 +1,9 @@
 using LOGICADIA.DTOs;
-using Logicadia.Infrastructure.Services.Services;
+using Logicadia.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using Logicadia.Application.Interfaces;
 
 namespace Logicadia.API.Controllers
 {

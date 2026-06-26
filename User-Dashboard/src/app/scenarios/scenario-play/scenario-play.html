@@ -1,59 +1,79 @@
-<!-- Loading -->
-<div *ngIf="isLoading" class="text-center py-5">
-  <div class="spinner-border text-primary"></div>
+<div class="scenario-page">
+
+<div *ngIf="isLoading" class="loading">
+<div class="spinner-border text-light"></div>
 </div>
 
-<!-- Error -->
-<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+<div *ngIf="errorMessage" class="error-box">
+{{errorMessage}}
+</div>
 
-<!-- Scenario -->
-<div *ngIf="scenario && !isLoading" class="d-flex flex-column align-items-center py-4">
+<div *ngIf="scenario && !isLoading" class="scenario-wrapper">
 
-  <div class="card shadow-sm p-4" style="max-width: 600px; width: 100%;">
+<div class="scenario-card">
 
-    <h4 class="fw-bold mb-2">{{ scenario.title }}</h4>
-    <p class="text-muted mb-4">{{ scenario.description }}</p>
+<div class="scenario-icon">🎮</div>
 
-    <!-- Choices -->
-    <div class="d-flex flex-column gap-2" *ngIf="!result">
-      <button
-        *ngFor="let choice of scenario.choices"
-        class="btn text-start"
-        [class.btn-outline-primary]="selectedChoiceId !== choice.id"
-        [class.btn-primary]="selectedChoiceId === choice.id"
-        (click)="selectChoice(choice)">
-        {{ choice.choiceText }}
-      </button>
-    </div>
+<h1>{{scenario.title}}</h1>
 
-    <!-- Submit -->
-    <button
-      *ngIf="!result"
-      class="btn btn-success mt-4"
-      [disabled]="!selectedChoiceId || isSubmitting"
-      (click)="submitChoice()">
-      <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
-      Submit
-    </button>
+<p class="description">
+{{scenario.description}}
+</p>
 
-    <!-- Feedback -->
-    <div *ngIf="result" class="mt-4">
-      <div class="alert" [class.alert-success]="result.isCorrect" [class.alert-danger]="!result.isCorrect">
-        <i class="bi" [class.bi-check-circle-fill]="result.isCorrect" [class.bi-x-circle-fill]="!result.isCorrect"></i>
-        <strong>{{ result.isCorrect ? 'Correct!' : 'Incorrect' }}</strong>
-        <p class="mb-0 mt-2" *ngIf="result.feedback">{{ result.feedback }}</p>
-      </div>
+<div class="choices" *ngIf="!result">
 
-      <div class="text-center mb-3">
-        <span class="badge bg-warning text-dark">
-          <i class="bi bi-star-fill"></i> +{{ result.xpEarned }} XP
-        </span>
-      </div>
+<button
+*ngFor="let choice of scenario.choices"
+class="choice-btn"
+[class.selected]="selectedChoiceId===choice.id"
+(click)="selectChoice(choice)">
 
-      <button class="btn btn-primary w-100" (click)="continueNext()">
-        Continue <i class="bi bi-arrow-right"></i>
-      </button>
-    </div>
+✨ {{choice.choiceText}}
 
-  </div>
+</button>
+
+</div>
+
+<button
+*ngIf="!result"
+class="submit-btn"
+[disabled]="!selectedChoiceId || isSubmitting"
+(click)="submitChoice()">
+
+<span *ngIf="isSubmitting"
+class="spinner-border spinner-border-sm">
+</span>
+
+Submit Answer
+
+</button>
+
+<div *ngIf="result" class="result-box">
+
+<div class="result-icon">
+{{result.isCorrect?'🎉':'❌'}}
+</div>
+
+<h2>
+{{result.isCorrect?'Correct!':'Incorrect'}}
+</h2>
+
+<p *ngIf="result.feedback">
+{{result.feedback}}
+</p>
+
+<div class="xp">
+⭐ +{{result.xpEarned}} XP
+</div>
+
+<button class="continue-btn" (click)="continueNext()">
+Continue →
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 </div>

@@ -21,5 +21,7 @@ namespace Logicadia.Application.Interfaces
         Task DeleteAsync(int id);
 
         // User
+        Task<ScenarioDetailDTO?> GetScenarioByIdAsync(int scenarioId, int userId);
+        Task<List<ScenarioDTO>> GetScenariosByStoryAsync(int storyId, int userId);
     }
 }

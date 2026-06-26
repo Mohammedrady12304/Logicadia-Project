@@ -1,8 +1,9 @@
+using Logicadia.Application.Interfaces;
 using Logicadia.Infrastructure.Data;
 using LOGICADIA.DTOs;
 using Microsoft.EntityFrameworkCore;
 
-namespace Logicadia.Infrastructure.Services.Services
+namespace Logicadia.Infrastructure.Services
 {
     public interface IXpSystem
     {
