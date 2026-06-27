@@ -9,7 +9,7 @@ namespace Logicadia.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     public class ScenariosController : ControllerBase
     {
         private readonly IScenarioService _scenarioService;

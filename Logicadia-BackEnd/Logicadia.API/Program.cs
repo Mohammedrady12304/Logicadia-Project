@@ -130,7 +130,7 @@ namespace Logicadia.API
             builder.Services.AddScoped<IScoreService, ScoreService>();
             builder.Services.AddScoped<ILevelRepository, LevelRepository>();
             builder.Services.AddScoped<ILevelService, LevelService>();
-            builder.Services.AddScoped<Logicadia.Infrastructure.Services.Services.ILevelService, Logicadia.Infrastructure.Services.Services.LevelService>();
+            //builder.Services.AddScoped<Logicadia.Infrastructure.Services.Services.ILevelService, Logicadia.Infrastructure.Services.Services.LevelService>();
             builder.Services.AddScoped<IStoryRepository, StoryRepository>();
             builder.Services.AddScoped<IStoryService, StoryService>();
             builder.Services.AddScoped<IAchievementEngine, AchievementEngine>();
