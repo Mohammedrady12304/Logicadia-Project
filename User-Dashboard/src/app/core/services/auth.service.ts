@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:7213/api';
+  private apiUrl = 'https://localhost:44342/api';
   private tokenKey = 'token';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -44,8 +44,8 @@ getUserName(): string | null {
   }
 
   isUser(): boolean {
-    return this.getRole() === 'User';
-  }
+  return this.getRole() === 'Child';
+}
 
   isAdmin(): boolean {
     return this.getRole() === 'Admin';

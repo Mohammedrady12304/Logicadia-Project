@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './scenarios-list.css'
 })
 export class ScenariosList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminScenarios';
-  private storiesUrl = 'https://localhost:7213/api/AdminStories';
+  private apiUrl = 'https://localhost:44342/api/AdminScenarios';
+  private storiesUrl = 'https://localhost:44342/api/AdminStories';
 
   scenarios: any[] = [];
   stories: any[] = [];

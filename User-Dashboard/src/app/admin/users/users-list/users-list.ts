@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './users-list.css'
 })
 export class UsersList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminUsers';
+  private apiUrl = 'https://localhost:44342/api/AdminUsers';
 
   users: any[] = [];
   loading = true;

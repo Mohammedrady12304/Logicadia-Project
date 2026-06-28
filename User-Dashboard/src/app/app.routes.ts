@@ -39,6 +39,8 @@ export const routes: Routes = [
       
   {
     path: 'levels',
+      canActivate: [userGuard],
+
     loadComponent: () => import('./levels/level-list/level-list').then(m => m.LevelList)
   },
   {
@@ -60,7 +62,7 @@ export const routes: Routes = [
   },
   {
   path: 'admin',
-  //canActivate: [adminGuard],
+  canActivate: [adminGuard],
   loadComponent: () => import('./admin/layout/admin-layout').then(m => m.AdminLayout),
   children: [
     {

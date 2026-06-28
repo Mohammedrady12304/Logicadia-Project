@@ -8,6 +8,7 @@ import { ScenarioPlayDto, SubmitChoiceDto, SubmitResultDto } from '../models/sce
 })
 export class ScenarioService {
   private apiUrl = 'https://localhost:44342/api/scenarios';
+  private choiceApiUrl = 'https://localhost:44342/api/Choices';
 
   constructor(private http: HttpClient) {}
 
@@ -16,6 +17,12 @@ export class ScenarioService {
   }
 
   submitChoice(scenarioId: number, dto: SubmitChoiceDto): Observable<SubmitResultDto> {
-    return this.http.post<SubmitResultDto>(`${this.apiUrl}/${scenarioId}/submit`, dto);
-}
+    return this.http.post<SubmitResultDto>(
+      `${this.choiceApiUrl}/submit`,
+      {
+        scenarioId: scenarioId,
+        choiceId: dto.chosenChoiceId
+      }
+    );
+  }
 }

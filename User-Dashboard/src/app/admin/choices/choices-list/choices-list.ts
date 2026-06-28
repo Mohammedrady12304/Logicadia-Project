@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './choices-list.css'
 })
 export class ChoicesList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminChoices';
-  private scenariosUrl = 'https://localhost:7213/api/AdminScenarios';
+  private apiUrl = 'https://localhost:44342/api/AdminChoices';
+  private scenariosUrl = 'https://localhost:44342/api/AdminScenarios';
 
   choices: any[] = [];
   scenarios: any[] = [];

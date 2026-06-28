@@ -57,18 +57,13 @@ export class StoryDetail implements OnInit {
   }
 
 
-  startStory(){
-
-    if(!this.story || this.story.scenarios.length === 0)
-      return;
-
-    this.router.navigate([
-      '/scenarios',
-      this.story.scenarios[0].id
-    ]);
-
-  }
-
+  startStory() {
+  if (!this.story || this.story.scenarios.length === 0) return;
+  const firstScenario = this.story.scenarios[0];
+  this.router.navigate(['/scenarios', firstScenario.id], { 
+    queryParams: { storyId: this.story.id } 
+  });
+}
 
   goBack(){
 

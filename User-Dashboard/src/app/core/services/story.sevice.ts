@@ -6,7 +6,7 @@ import { StoryDetailDto } from '../models/story.model';
   providedIn: 'root',
 })
 export class StorySevice {
-  private apiUrl = 'https://localhost:7213/api/stories';
+  private apiUrl = 'https://localhost:44342/api/stories';
 
   constructor(private http: HttpClient) {}
 

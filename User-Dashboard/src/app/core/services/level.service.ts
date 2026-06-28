@@ -7,7 +7,7 @@ import { LevelDetailDto ,LevelDto  } from '../models/level.models';
   providedIn: 'root',
 })
 export class LevelService {
-  private apiUrl = 'https://localhost:7213/api/levels';
+  private apiUrl = 'https://localhost:44342/api/levels';
 
   constructor(private http: HttpClient) {}
 

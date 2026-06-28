@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './levels-list.css'
 })
 export class LevelsList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminLevels';
+  private apiUrl = 'https://localhost:44342/api/AdminLevels';
 
   levels: any[] = [];
   loading = true;

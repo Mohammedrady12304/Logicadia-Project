@@ -2,12 +2,12 @@ using Logicadia.Application.Interfaces;
 using Logicadia.Domain.Entities;
 using Logicadia.Infrastructure.Data;
 using Logicadia.Infrastructure.Repositories;
-//using Logicadia.Infrastructure.Services.Services;
 using Logicadia.Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Logicadia.Application.Mappings;
 using System.Security.Claims;
 using System.Text;
 
@@ -88,6 +88,7 @@ namespace Logicadia.API
 
             // AutoMapper - 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            builder.Services.AddAutoMapper(typeof(LevelProfile).Assembly);
 
             // Auth Services
             builder.Services.AddScoped<IAuthService, AuthService>();

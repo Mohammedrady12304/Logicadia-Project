@@ -12,7 +12,7 @@ import { AuthService } from '../../core/services/auth.service';
   styleUrl: './dashboard.css'
 })
 export class Dashboard implements OnInit {
-  private apiUrl = 'https://localhost:7213/api';
+  private apiUrl = 'https://localhost:44342/api';
 
   stats = [
     { label: 'Users',        value: 0, icon: 'bi bi-people-fill',    route: '/admin/users',        color: '#1a1654' },

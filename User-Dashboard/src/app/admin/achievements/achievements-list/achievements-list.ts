@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './achievements-list.css'
 })
 export class AchievementsList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminAchievements';
+  private apiUrl = 'https://localhost:44342/api/AdminAchievements';
 
   achievements: any[] = [];
   loading = true;

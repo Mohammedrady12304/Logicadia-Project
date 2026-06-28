@@ -115,29 +115,56 @@ namespace Logicadia.Infrastructure.Services
             if (scenario == null)
                 throw new InvalidOperationException("Scenario not found");
 
-            var existingProgress = await _context.UserProgress
-                .FirstOrDefaultAsync(p => p.UserId == userId && p.ScenarioId == scenarioId);
-            if (existingProgress != null)
-                throw new InvalidOperationException("Scenario already completed");
+            var child = await _context.Children
+                .FirstOrDefaultAsync(c => c.UserId == userId);
+            if (child == null)
+                throw new InvalidOperationException("Child not found");
 
             var xpEarned = choice.IsCorrect ? choice.XpValue : choice.XpValue / 2;
 
-            var userProgress = new UserProgress
+            var existingProgress = await _context.UserProgress
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.ScenarioId == scenarioId);
+
+            if (existingProgress != null)
             {
-                UserId = userId,
-                ScenarioId = scenarioId,
-                ChosenChoiceId = choiceId,
-                IsCorrect = choice.IsCorrect,
-                XpEarned = xpEarned,
-                CompletedAt = DateTime.UtcNow
-            };
+                existingProgress.ChosenChoiceId = choiceId;
+                existingProgress.IsCorrect = choice.IsCorrect;
+                existingProgress.XpEarned = xpEarned;
+                existingProgress.CompletedAt = DateTime.UtcNow;
+            }
+            else
+            {
+                var userProgress = new UserProgress
+                {
+                    UserId = userId,
+                    ChildId = child.Id,
+                    ScenarioId = scenarioId,
+                    ChosenChoiceId = choiceId,
+                    IsCorrect = choice.IsCorrect,
+                    XpEarned = xpEarned,
+                    LevelId = scenario.Story.LevelId,
+                    StoryId = scenario.StoryId,
+                    CompletedAt = DateTime.UtcNow
+                };
+                _context.UserProgress.Add(userProgress);
+            }
 
-            _context.UserProgress.Add(userProgress);
+            var levelUnlocked = await _levelUnlockService
+                .CheckAndUnlockNextLevelAsync(userId, scenario.Story.LevelId);
+            var achievementsUnlocked = await _achievementEngine
+                .CheckAndUnlockAchievementsAsync(userId);
 
-            var levelUnlocked = await _levelUnlockService.CheckAndUnlockNextLevelAsync(userId, scenario.Story.LevelId);
-            var achievementsUnlocked = await _achievementEngine.CheckAndUnlockAchievementsAsync(userId);
-
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(
+                    ex.InnerException?.InnerException?.Message
+                    ?? ex.InnerException?.Message
+                );
+            }
 
             return new ChoiceSubmitResponse
             {
@@ -149,6 +176,7 @@ namespace Logicadia.Infrastructure.Services
             };
         }
 
+       
         public async Task<List<ChoiceDTO>> GetChoicesByScenarioAsync(int scenarioId)
         {
             return await _context.Choices

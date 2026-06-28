@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './stories-list.css'
 })
 export class StoriesList implements OnInit {
-  private apiUrl = 'https://localhost:7213/api/AdminStories';
-  private levelsUrl = 'https://localhost:7213/api/AdminLevels';
+  private apiUrl = 'https://localhost:44342/api/AdminStories';
+  private levelsUrl = 'https://localhost:44342/api/AdminLevels';
 
   stories: any[] = [];
   levels: any[] = [];
