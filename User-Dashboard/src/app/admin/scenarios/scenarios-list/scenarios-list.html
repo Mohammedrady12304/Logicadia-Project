@@ -1,0 +1,192 @@
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h4><i class="bi bi-diagram-3-fill me-2"></i>Scenarios Management</h4>
+    <button class="btn-create" (click)="openCreate()">
+      <i class="bi bi-plus-lg me-1"></i> New Scenario
+    </button>
+  </div>
+
+  <!-- Filter by Story -->
+  <div class="filter-bar">
+    <div class="filter-select-wrapper">
+      <i class="bi bi-funnel-fill"></i>
+      <select [(ngModel)]="selectedStoryId" (change)="onStoryFilter()">
+        <option [ngValue]="null">All Stories</option>
+        @for (story of stories; track story.id) {
+          <option [ngValue]="story.id">{{ story.title }}</option>
+        }
+      </select>
+    </div>
+    @if (selectedStoryId) {
+      <button class="btn-clear" (click)="clearFilter()">
+        <i class="bi bi-x-lg me-1"></i> Clear
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border" style="color: #1a1654"></div>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+
+  <!-- Table -->
+  @if (!loading && !error) {
+    <div class="table-card">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Story</th>
+            <th>Description</th>
+            <th>Order</th>
+            <th>Choices</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (scenario of scenarios; track scenario.id) {
+            <tr>
+              <td>{{ scenario.id }}</td>
+              <td><strong>{{ scenario.title }}</strong></td>
+              <td>
+                <span class="story-badge">{{ getStoryTitle(scenario.storyId) }}</span>
+              </td>
+              <td class="text-muted desc-cell">{{ scenario.description ?? '—' }}</td>
+              <td>
+                <span class="order-badge">{{ scenario.orderIndex }}</span>
+              </td>
+              <td>
+                <span class="choices-badge">
+                  <i class="bi bi-ui-checks me-1"></i>{{ scenario.choicesCount }}
+                </span>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button class="btn-action edit" (click)="openEdit(scenario)" title="Edit">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn-action delete" (click)="openDelete(scenario)" title="Delete">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar">
+      <span class="total-info">Total: {{ totalCount }} scenarios</span>
+      <div class="pagination-btns">
+        <button (click)="changePage(pageNumber - 1)" [disabled]="pageNumber === 1">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <span>{{ pageNumber }} / {{ totalPages }}</span>
+        <button (click)="changePage(pageNumber + 1)" [disabled]="pageNumber === totalPages">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  }
+
+</div>
+
+<!-- Create Modal -->
+@if (showCreateModal) {
+  <div class="modal-overlay" (click)="showCreateModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-plus-lg me-2"></i>New Scenario</h6>
+        <button (click)="showCreateModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Story <span class="text-danger">*</span></label>
+          <select class="form-select" [(ngModel)]="createForm.storyId">
+            <option [ngValue]="0" disabled>Select a story</option>
+            @for (story of stories; track story.id) {
+              <option [ngValue]="story.id">{{ story.title }}</option>
+            }
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Title <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="createForm.title" placeholder="Scenario title" />
+        </div>
+        <div class="mb-3">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="createForm.description" rows="3" placeholder="Optional description..."></textarea>
+        </div>
+        <div class="mb-3">
+          <label>Order Index</label>
+          <input class="form-control" type="number" [(ngModel)]="createForm.orderIndex" />
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showCreateModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveCreate()">Create</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Edit Modal -->
+@if (showEditModal) {
+  <div class="modal-overlay" (click)="showEditModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-pencil-fill me-2"></i>Edit Scenario</h6>
+        <button (click)="showEditModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Title <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="editForm.title" />
+        </div>
+        <div class="mb-3">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="editForm.description" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+          <label>Order Index</label>
+          <input class="form-control" type="number" [(ngModel)]="editForm.orderIndex" />
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showEditModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveEdit()">Save</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Delete Modal -->
+@if (showDeleteModal) {
+  <div class="modal-overlay" (click)="showDeleteModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-trash-fill me-2"></i>Delete Scenario</h6>
+        <button (click)="showDeleteModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <p>Are you sure you want to delete <strong>{{ scenarioToDelete?.title }}</strong>?</p>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showDeleteModal = false">Cancel</button>
+        <button class="btn-delete" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+}

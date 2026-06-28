@@ -1,0 +1,9 @@
+<div class="admin-wrapper">
+  <app-admin-sidebar [isOpen]="sidebarOpen" />
+  <div class="admin-main" [class.expanded]="!sidebarOpen">
+    <app-admin-navbar (toggleSidebar)="toggleSidebar()" />
+    <div class="admin-content">
+      <router-outlet />
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { interval, Subscription } from 'rxjs';
 
@@ -16,11 +16,15 @@ export class NavBar implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router
   ) {}
 
+  get isAdminRoute(): boolean {
+    return this.router.url.startsWith('/admin');
+  }
+
   ngOnInit() {
-    // تابع التغييرات كل 300ms
     this.sub = interval(300).subscribe(() => {
       const newLogin = this.authService.isLoggedIn();
       const newName = this.authService.getUserName() ?? '';

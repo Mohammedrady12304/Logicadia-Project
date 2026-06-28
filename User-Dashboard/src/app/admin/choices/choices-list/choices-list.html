@@ -1,0 +1,212 @@
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h4><i class="bi bi-ui-checks me-2"></i>Choices Management</h4>
+    <button class="btn-create" (click)="openCreate()">
+      <i class="bi bi-plus-lg me-1"></i> New Choice
+    </button>
+  </div>
+
+  <!-- Filter by Scenario -->
+  <div class="filter-bar">
+    <div class="filter-select-wrapper">
+      <i class="bi bi-funnel-fill"></i>
+      <select [(ngModel)]="selectedScenarioId" (change)="onScenarioFilter()">
+        <option [ngValue]="null">All Scenarios</option>
+        @for (scenario of scenarios; track scenario.id) {
+          <option [ngValue]="scenario.id">{{ scenario.title }}</option>
+        }
+      </select>
+    </div>
+    @if (selectedScenarioId) {
+      <button class="btn-clear" (click)="clearFilter()">
+        <i class="bi bi-x-lg me-1"></i> Clear
+      </button>
+    }
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border" style="color: #1a1654"></div>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+
+  <!-- Table -->
+  @if (!loading && !error) {
+    <div class="table-card">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Choice Text</th>
+            <th>Scenario</th>
+            <th>Correct</th>
+            <th>Feedback</th>
+            <th>XP</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (choice of choices; track choice.id) {
+            <tr>
+              <td>{{ choice.id }}</td>
+              <td><strong>{{ choice.choiceText }}</strong></td>
+              <td>
+                <span class="scenario-badge">{{ getScenarioTitle(choice.scenarioId) }}</span>
+              </td>
+              <td>
+                @if (choice.isCorrect) {
+                  <span class="badge bg-success"><i class="bi bi-check-lg"></i> Correct</span>
+                } @else {
+                  <span class="badge bg-danger"><i class="bi bi-x-lg"></i> Wrong</span>
+                }
+              </td>
+              <td class="text-muted feedback-cell">{{ choice.feedback ?? '—' }}</td>
+              <td>
+                <span class="xp-badge">
+                  <i class="bi bi-star-fill me-1"></i>{{ choice.xpValue }}
+                </span>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button class="btn-action edit" (click)="openEdit(choice)" title="Edit">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn-action delete" (click)="openDelete(choice)" title="Delete">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar">
+      <span class="total-info">Total: {{ totalCount }} choices</span>
+      <div class="pagination-btns">
+        <button (click)="changePage(pageNumber - 1)" [disabled]="pageNumber === 1">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <span>{{ pageNumber }} / {{ totalPages }}</span>
+        <button (click)="changePage(pageNumber + 1)" [disabled]="pageNumber === totalPages">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  }
+
+</div>
+
+<!-- Create Modal -->
+@if (showCreateModal) {
+  <div class="modal-overlay" (click)="showCreateModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-plus-lg me-2"></i>New Choice</h6>
+        <button (click)="showCreateModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Scenario <span class="text-danger">*</span></label>
+          <select class="form-select" [(ngModel)]="createForm.scenarioId">
+            <option [ngValue]="0" disabled>Select a scenario</option>
+            @for (scenario of scenarios; track scenario.id) {
+              <option [ngValue]="scenario.id">{{ scenario.title }}</option>
+            }
+          </select>
+        </div>
+        <div class="mb-3">
+          <label>Choice Text <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="createForm.choiceText" placeholder="Enter choice text" />
+        </div>
+        <div class="mb-3">
+          <label>Feedback</label>
+          <input class="form-control" [(ngModel)]="createForm.feedback" placeholder="Feedback shown after selection" />
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label>XP Value</label>
+            <input class="form-control" type="number" [(ngModel)]="createForm.xpValue" />
+          </div>
+          <div class="col-6 mb-3 d-flex align-items-end">
+            <div class="correct-toggle">
+              <input type="checkbox" id="isCorrectCreate" [(ngModel)]="createForm.isCorrect" />
+              <label for="isCorrectCreate">Is Correct Answer</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showCreateModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveCreate()">Create</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Edit Modal -->
+@if (showEditModal) {
+  <div class="modal-overlay" (click)="showEditModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-pencil-fill me-2"></i>Edit Choice</h6>
+        <button (click)="showEditModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Choice Text <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="editForm.choiceText" />
+        </div>
+        <div class="mb-3">
+          <label>Feedback</label>
+          <input class="form-control" [(ngModel)]="editForm.feedback" />
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label>XP Value</label>
+            <input class="form-control" type="number" [(ngModel)]="editForm.xpValue" />
+          </div>
+          <div class="col-6 mb-3 d-flex align-items-end">
+            <div class="correct-toggle">
+              <input type="checkbox" id="isCorrectEdit" [(ngModel)]="editForm.isCorrect" />
+              <label for="isCorrectEdit">Is Correct Answer</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showEditModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveEdit()">Save</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Delete Modal -->
+@if (showDeleteModal) {
+  <div class="modal-overlay" (click)="showDeleteModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-trash-fill me-2"></i>Delete Choice</h6>
+        <button (click)="showDeleteModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <p>Are you sure you want to delete <strong>{{ choiceToDelete?.choiceText }}</strong>?</p>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showDeleteModal = false">Cancel</button>
+        <button class="btn-delete" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+}

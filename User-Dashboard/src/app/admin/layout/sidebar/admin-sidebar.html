@@ -1,0 +1,22 @@
+<div class="sidebar" [class.sidebar-closed]="!isOpen">
+  <!-- Logo -->
+  <div class="sidebar-brand">
+    <i class="bi bi-controller me-2"></i>
+    <span class="brand-text">Logicadia</span>
+  </div>
+
+  <!-- Nav Items -->
+  <ul class="sidebar-nav list-unstyled">
+    @for (item of navItems; track item.route) {
+      <li>
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="sidebar-link">
+          <i [class]="item.icon"></i>
+          <span class="link-label">{{ item.label }}</span>
+        </a>
+      </li>
+    }
+  </ul>
+</div>

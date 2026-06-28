@@ -1,0 +1,173 @@
+<div class="page-container">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h4><i class="bi bi-bar-chart-fill me-2"></i>Levels Management</h4>
+    <button class="btn-create" (click)="openCreate()">
+      <i class="bi bi-plus-lg me-1"></i> New Level
+    </button>
+  </div>
+
+  <!-- Loading -->
+  @if (loading) {
+    <div class="text-center py-5">
+      <div class="spinner-border" style="color: #1a1654"></div>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error) {
+    <div class="alert alert-danger">{{ error }}</div>
+  }
+
+  <!-- Table -->
+  @if (!loading && !error) {
+    <div class="table-card">
+      <table class="table table-hover mb-0">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Order</th>
+            <th>XP Reward</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (level of levels; track level.id) {
+            <tr>
+              <td>{{ level.id }}</td>
+              <td><strong>{{ level.title }}</strong></td>
+              <td class="text-muted">{{ level.description ?? '—' }}</td>
+              <td>
+                <span class="order-badge">{{ level.orderIndex }}</span>
+              </td>
+              <td>
+                <span class="xp-badge">
+                  <i class="bi bi-star-fill me-1"></i>{{ level.xpReward }} XP
+                </span>
+              </td>
+              <td>
+                <div class="action-btns">
+                  <button class="btn-action edit" (click)="openEdit(level)" title="Edit">
+                    <i class="bi bi-pencil-fill"></i>
+                  </button>
+                  <button class="btn-action delete" (click)="openDelete(level)" title="Delete">
+                    <i class="bi bi-trash-fill"></i>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination-bar">
+      <span class="total-info">Total: {{ totalCount }} levels</span>
+      <div class="pagination-btns">
+        <button (click)="changePage(pageNumber - 1)" [disabled]="pageNumber === 1">
+          <i class="bi bi-chevron-left"></i>
+        </button>
+        <span>{{ pageNumber }} / {{ totalPages }}</span>
+        <button (click)="changePage(pageNumber + 1)" [disabled]="pageNumber === totalPages">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  }
+
+</div>
+
+<!-- Create Modal -->
+@if (showCreateModal) {
+  <div class="modal-overlay" (click)="showCreateModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-plus-lg me-2"></i>New Level</h6>
+        <button (click)="showCreateModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Title <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="createForm.title" placeholder="Level title" />
+        </div>
+        <div class="mb-3">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="createForm.description" rows="3" placeholder="Optional description"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label>Order Index</label>
+            <input class="form-control" type="number" [(ngModel)]="createForm.orderIndex" />
+          </div>
+          <div class="col-6 mb-3">
+            <label>XP Reward</label>
+            <input class="form-control" type="number" [(ngModel)]="createForm.xpReward" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showCreateModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveCreate()">Create</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Edit Modal -->
+@if (showEditModal) {
+  <div class="modal-overlay" (click)="showEditModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-pencil-fill me-2"></i>Edit Level</h6>
+        <button (click)="showEditModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <div class="mb-3">
+          <label>Title <span class="text-danger">*</span></label>
+          <input class="form-control" [(ngModel)]="editForm.title" />
+        </div>
+        <div class="mb-3">
+          <label>Description</label>
+          <textarea class="form-control" [(ngModel)]="editForm.description" rows="3"></textarea>
+        </div>
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label>Order Index</label>
+            <input class="form-control" type="number" [(ngModel)]="editForm.orderIndex" />
+          </div>
+          <div class="col-6 mb-3">
+            <label>XP Reward</label>
+            <input class="form-control" type="number" [(ngModel)]="editForm.xpReward" />
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showEditModal = false">Cancel</button>
+        <button class="btn-save" (click)="saveEdit()">Save</button>
+      </div>
+    </div>
+  </div>
+}
+
+<!-- Delete Modal -->
+@if (showDeleteModal) {
+  <div class="modal-overlay" (click)="showDeleteModal = false">
+    <div class="modal-card" (click)="$event.stopPropagation()">
+      <div class="modal-header-custom">
+        <h6><i class="bi bi-trash-fill me-2"></i>Delete Level</h6>
+        <button (click)="showDeleteModal = false"><i class="bi bi-x-lg"></i></button>
+      </div>
+      <div class="modal-body-custom">
+        <p>Are you sure you want to delete <strong>{{ levelToDelete?.title }}</strong>?</p>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn-cancel" (click)="showDeleteModal = false">Cancel</button>
+        <button class="btn-delete" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+}
