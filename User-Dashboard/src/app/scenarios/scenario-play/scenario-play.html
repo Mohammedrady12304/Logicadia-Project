@@ -1,24 +1,29 @@
+<app-nav-bar></app-nav-bar>
+
 <div class="scenario-page" [style.background]="theme.bg">
 
+  <!-- Loading -->
   <div *ngIf="isLoading" class="loading">
     <div class="spinner-border text-light"></div>
   </div>
 
+  <!-- Error -->
   <div *ngIf="errorMessage" class="error-box">{{ errorMessage }}</div>
 
-  <div *ngIf="scenario && !isLoading" class="scenario-wrapper">
+  <!-- Main Content -->
+  <div *ngIf="!isLoading && !errorMessage" class="scenario-wrapper">
 
     <!-- Topic Badge -->
     <div class="topic-badge">
-      <span class="topic-icon">💡</span>
-      <span>{{ theme.topic }}</span>
+      <span>💡 {{ theme.topic }}</span>
     </div>
 
     <!-- Game Scene -->
     <div class="game-scene" [style.background]="theme.bg">
 
       <div class="game-stars">
-        <div class="star" *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"
+        <div class="star"
+             *ngFor="let s of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]"
              [style.left]="(s * 6.5) + '%'"
              [style.top]="(s * 13 % 80) + '%'"
              [style.width]="(s % 3 + 1) + 'px'"
@@ -28,13 +33,9 @@
 
       <div class="game-floor" [style.background]="theme.floor"></div>
 
-      <div class="hero" [style.left]="getHeroLeft()">
-        {{ theme.hero }}
-      </div>
+      <div class="hero" [style.left]="getHeroLeft()">{{ theme.hero }}</div>
 
-      <div class="destination">
-        {{ theme.destination }}
-      </div>
+      <div class="destination">{{ theme.destination }}</div>
 
       <div class="progress-track">
         <div class="progress-fill" [style.width]="getProgressPercent() + '%'"></div>
@@ -44,14 +45,13 @@
 
     </div>
 
-    <!-- Scenario Card -->
-    <div class="scenario-card">
-
+    <!-- ============ STATE 1: PLAYING ============ -->
+    <div class="scenario-card" *ngIf="gameState === 'playing' && scenario">
       <div class="scenario-icon">🎮</div>
       <h1>{{ scenario.title }}</h1>
       <p class="description">{{ scenario.description }}</p>
 
-      <div class="choices" *ngIf="!result">
+      <div class="choices">
         <button
           *ngFor="let choice of scenario.choices"
           class="choice-btn"
@@ -62,22 +62,71 @@
       </div>
 
       <button
-        *ngIf="!result"
         class="submit-btn"
         [disabled]="!selectedChoiceId || isSubmitting"
         (click)="submitChoice()">
         <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm"></span>
         Submit Answer
       </button>
+    </div>
 
-      <div *ngIf="result" class="result-box">
-        <div class="result-icon">{{ result.isCorrect ? '🎉' : '❌' }}</div>
-        <h2>{{ result.isCorrect ? 'Correct!' : 'Incorrect' }}</h2>
-        <p *ngIf="result.feedback">{{ result.feedback }}</p>
-        <div class="xp">⭐ +{{ result.xpEarned }} XP</div>
-        <button class="continue-btn" (click)="continueNext()">Continue →</button>
+    <!-- ============ STATE 2: FEEDBACK ============ -->
+    <div class="scenario-card" *ngIf="gameState === 'feedback' && result">
+      <div class="result-icon">{{ result.isCorrect ? '🎉' : '😅' }}</div>
+      <h2>{{ result.isCorrect ? 'Correct!' : 'Not quite...' }}</h2>
+      <p class="feedback-text">{{ result.feedback }}</p>
+
+      <div class="xp" *ngIf="result.isCorrect">
+        ⭐ +{{ result.xpEarned }} XP earned!
       </div>
 
+      <div class="achievements" *ngIf="result.achievementsUnlocked && result.achievementsUnlocked.length">
+        <div class="achievement-badge" *ngFor="let a of result.achievementsUnlocked">
+          🏅 {{ a.title }}
+        </div>
+      </div>
+
+      <button class="continue-btn" (click)="showConcept()">
+        {{ result.isCorrect ? 'See what you learned →' : 'Try again →' }}
+      </button>
     </div>
+
+    <!-- ============ STATE 3: CONCEPT REVEAL ============ -->
+    <div class="scenario-card concept-card" *ngIf="gameState === 'concept'">
+      <div class="concept-icon">💡</div>
+      <h2 class="concept-title">You just used a {{ theme.topicName }}!</h2>
+      <p class="concept-text">{{ theme.conceptExplanation }}</p>
+
+      <div class="concept-box">
+        <span class="concept-keyword">{{ theme.topicName }}</span>
+        <span class="concept-desc">in coding = what you just did in the story!</span>
+      </div>
+
+      <button class="continue-btn" (click)="continueNext()">
+        Continue the adventure →
+      </button>
+    </div>
+
+    <!-- ============ STATE 4: RECAP ============ -->
+    <div class="scenario-card recap-card" *ngIf="gameState === 'recap'">
+      <div class="recap-emoji">🏆</div>
+      <h2 class="recap-title">Amazing job!</h2>
+      <p class="recap-sub">You completed the story and learned something new today!</p>
+
+      <div class="recap-box">
+        <div class="recap-label">Today you learned:</div>
+        <div class="recap-concept">{{ theme.topicName }}</div>
+        <div class="recap-explanation">{{ theme.conceptExplanation }}</div>
+      </div>
+
+      <div class="recap-score">
+        ✅ Correct answers: {{ correctCount }} / {{ totalScenarios }}
+      </div>
+
+      <button class="continue-btn" (click)="goToLevels()">
+        🗺️ Back to Levels
+      </button>
+    </div>
+
   </div>
 </div>

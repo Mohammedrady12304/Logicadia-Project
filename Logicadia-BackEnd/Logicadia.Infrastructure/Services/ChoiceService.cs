@@ -115,11 +115,14 @@ namespace Logicadia.Infrastructure.Services
             if (scenario == null)
                 throw new InvalidOperationException("Scenario not found");
 
+<<<<<<< HEAD
             var child = await _context.Children
                 .FirstOrDefaultAsync(c => c.UserId == userId);
             if (child == null)
                 throw new InvalidOperationException("Child not found");
 
+=======
+>>>>>>> e6abfafca3b8b35b2e11eab7018182fbef0e4063
             var xpEarned = choice.IsCorrect ? choice.XpValue : choice.XpValue / 2;
 
             var existingProgress = await _context.UserProgress
@@ -137,13 +140,19 @@ namespace Logicadia.Infrastructure.Services
                 var userProgress = new UserProgress
                 {
                     UserId = userId,
+<<<<<<< HEAD
                     ChildId = child.Id,
+=======
+>>>>>>> e6abfafca3b8b35b2e11eab7018182fbef0e4063
                     ScenarioId = scenarioId,
                     ChosenChoiceId = choiceId,
                     IsCorrect = choice.IsCorrect,
                     XpEarned = xpEarned,
+<<<<<<< HEAD
                     LevelId = scenario.Story.LevelId,
                     StoryId = scenario.StoryId,
+=======
+>>>>>>> e6abfafca3b8b35b2e11eab7018182fbef0e4063
                     CompletedAt = DateTime.UtcNow
                 };
                 _context.UserProgress.Add(userProgress);
@@ -154,6 +163,7 @@ namespace Logicadia.Infrastructure.Services
             var achievementsUnlocked = await _achievementEngine
                 .CheckAndUnlockAchievementsAsync(userId);
 
+<<<<<<< HEAD
             try
             {
                 await _context.SaveChangesAsync();
@@ -165,6 +175,13 @@ namespace Logicadia.Infrastructure.Services
                     ?? ex.InnerException?.Message
                 );
             }
+=======
+            var nextScenario = await _context.Scenarios
+                .Where(s => s.StoryId == scenario.StoryId && s.OrderIndex == scenario.OrderIndex + 1)
+                .FirstOrDefaultAsync();
+
+            await _context.SaveChangesAsync();
+>>>>>>> e6abfafca3b8b35b2e11eab7018182fbef0e4063
 
             return new ChoiceSubmitResponse
             {
@@ -172,6 +189,7 @@ namespace Logicadia.Infrastructure.Services
                 XpEarned = xpEarned,
                 Feedback = choice.Feedback,
                 LevelUnlocked = levelUnlocked,
+                NextScenarioId = nextScenario?.Id,
                 AchievementsUnlocked = achievementsUnlocked
             };
         }

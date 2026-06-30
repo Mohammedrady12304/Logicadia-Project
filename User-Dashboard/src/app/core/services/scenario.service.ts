@@ -21,7 +21,7 @@ export class ScenarioService {
       `${this.choiceApiUrl}/submit`,
       {
         scenarioId: scenarioId,
-        choiceId: dto.chosenChoiceId
+        choiceId: dto.choiceId
       }
     );
   }
