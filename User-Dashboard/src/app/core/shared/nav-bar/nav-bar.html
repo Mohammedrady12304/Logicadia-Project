@@ -11,7 +11,7 @@
 
         @if (isLoggedIn) {
           <span class="nav-link">{{ userName }}</span>
-          <a (click)="logout()" class="nav-link logout-btn">Logout</a>
+          <a (click)="logout()" class="nav-link logout-btn" style="cursor: pointer;">Logout</a>
         } @else {
           <a routerLink="/register" class="nav-link">Register</a>
           <a routerLink="/login" class="nav-link">Login</a>

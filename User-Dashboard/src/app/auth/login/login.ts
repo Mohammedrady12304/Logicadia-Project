@@ -1,55 +1,60 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [FormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
 export class Login {
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   Username = '';
   Password = '';
+  
   errorMessage = '';
   isLoading = false;
 
-  constructor(private authService: AuthService, private router: Router) {}
-
   login() {
-    console.log('login called', this.Username, this.Password);
+    if (!this.Username || !this.Password) {
+      this.errorMessage = 'Please enter both username and password.';
+      return;
+    }
+
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.authService.login(this.Username, this.Password).subscribe({
-      next: (response) => {
-        console.log('response', response);
-        this.authService.saveToken(response.token, response.role);
-        console.log('role is:', response.role);
+    const credentials = { username: this.Username, password: this.Password };
 
-        if (response.role === 'Admin') {
-          console.log('navigating to admin');
-          this.router.navigate(['/admin']);
-        } else if (response.role === 'Parent') {
-          console.log('navigating to parent');
-          this.router.navigate(['/parent/children']);
-        } else if (response.role === 'Child') {
-          console.log('navigating to levels');
-          this.router.navigate(['/levels']);
+    this.authService.login(credentials).subscribe({
+      next: (response: any) => {
+        // نضمن دائماً إغلاق الـ Spinner عند استقبال الرد بنجاح
+        this.isLoading = false;
+
+        // استخراج الـ Role بشكل آمن مع مراعاة حالة الأحرف المتوقعة من الـ API
+        const userRole = response.role || response.Role;
+
+        if (userRole === 'Admin') {
+          this.router.navigate(['/admin']); 
+        } else if (userRole === 'Parent') {
+          this.router.navigate(['/parent/children']); 
+        } else if (userRole === 'Child') {
+          this.router.navigate(['/levels']); 
         } else {
-          console.log('not authorized');
-          this.errorMessage = 'You are not authorized.';
+          this.errorMessage = 'You are not authorized to access this area.';
           this.authService.logout();
         }
-
-        this.isLoading = false;
       },
-      error: (err) => {
-        console.log('error', err);
-        this.errorMessage = 'Invalid Username or password.';
+      error: (err: any) => {
         this.isLoading = false;
+        // عرض رسالة الخطأ القادمة من الـ API (مثل Invalid username/email...) بدلاً من الرسالة الثابتة
+        this.errorMessage = err.error?.message || 'Invalid username or password.';
       }
     });
   }

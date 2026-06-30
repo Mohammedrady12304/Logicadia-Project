@@ -1,11 +1,12 @@
 import { Component, ChangeDetectorRef, OnInit, OnDestroy } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule, Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-nav-bar',
-  imports: [RouterModule],
+  standalone: true,
+  imports: [RouterModule, RouterLink],
   templateUrl: './nav-bar.html',
   styleUrl: './nav-bar.css',
 })
@@ -42,6 +43,8 @@ export class NavBar implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }
