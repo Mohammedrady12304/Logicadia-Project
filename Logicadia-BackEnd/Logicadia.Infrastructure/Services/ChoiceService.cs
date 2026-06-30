@@ -115,27 +115,40 @@ namespace Logicadia.Infrastructure.Services
             if (scenario == null)
                 throw new InvalidOperationException("Scenario not found");
 
-            var existingProgress = await _context.UserProgress
-                .FirstOrDefaultAsync(p => p.UserId == userId && p.ScenarioId == scenarioId);
-            if (existingProgress != null)
-                throw new InvalidOperationException("Scenario already completed");
-
             var xpEarned = choice.IsCorrect ? choice.XpValue : choice.XpValue / 2;
 
-            var userProgress = new UserProgress
+            var existingProgress = await _context.UserProgress
+                .FirstOrDefaultAsync(p => p.UserId == userId && p.ScenarioId == scenarioId);
+
+            if (existingProgress != null)
             {
-                UserId = userId,
-                ScenarioId = scenarioId,
-                ChosenChoiceId = choiceId,
-                IsCorrect = choice.IsCorrect,
-                XpEarned = xpEarned,
-                CompletedAt = DateTime.UtcNow
-            };
+                existingProgress.ChosenChoiceId = choiceId;
+                existingProgress.IsCorrect = choice.IsCorrect;
+                existingProgress.XpEarned = xpEarned;
+                existingProgress.CompletedAt = DateTime.UtcNow;
+            }
+            else
+            {
+                var userProgress = new UserProgress
+                {
+                    UserId = userId,
+                    ScenarioId = scenarioId,
+                    ChosenChoiceId = choiceId,
+                    IsCorrect = choice.IsCorrect,
+                    XpEarned = xpEarned,
+                    CompletedAt = DateTime.UtcNow
+                };
+                _context.UserProgress.Add(userProgress);
+            }
 
-            _context.UserProgress.Add(userProgress);
+            var levelUnlocked = await _levelUnlockService
+                .CheckAndUnlockNextLevelAsync(userId, scenario.Story.LevelId);
+            var achievementsUnlocked = await _achievementEngine
+                .CheckAndUnlockAchievementsAsync(userId);
 
-            var levelUnlocked = await _levelUnlockService.CheckAndUnlockNextLevelAsync(userId, scenario.Story.LevelId);
-            var achievementsUnlocked = await _achievementEngine.CheckAndUnlockAchievementsAsync(userId);
+            var nextScenario = await _context.Scenarios
+                .Where(s => s.StoryId == scenario.StoryId && s.OrderIndex == scenario.OrderIndex + 1)
+                .FirstOrDefaultAsync();
 
             await _context.SaveChangesAsync();
 
@@ -145,6 +158,7 @@ namespace Logicadia.Infrastructure.Services
                 XpEarned = xpEarned,
                 Feedback = choice.Feedback,
                 LevelUnlocked = levelUnlocked,
+                NextScenarioId = nextScenario?.Id,
                 AchievementsUnlocked = achievementsUnlocked
             };
         }

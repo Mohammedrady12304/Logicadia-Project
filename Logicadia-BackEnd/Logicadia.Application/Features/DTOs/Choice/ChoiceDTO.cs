@@ -23,6 +23,8 @@ namespace Logicadia.Application.Features.DTOs.Choice
         public int XpEarned { get; set; }
         public string? Feedback { get; set; }
         public bool LevelUnlocked { get; set; }
+        public int? NextScenarioId { get; set; }
+
         public List<AchievementUnlockedDTO> AchievementsUnlocked { get; set; } = new List<AchievementUnlockedDTO>();
     }
 }

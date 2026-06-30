@@ -12,12 +12,22 @@ export interface ScenarioPlayDto {
 
 export interface SubmitChoiceDto {
   scenarioId: number;
-  chosenChoiceId: number;
+  choiceId: number;
+}
+
+
+export interface AchievementUnlocked {
+  id: number;
+  title: string;
+  description: string;
+  iconUrl?: string;
 }
 
 export interface SubmitResultDto {
   isCorrect: boolean;
   feedback?: string;
   xpEarned: number;
+  levelUnlocked: boolean;
   nextScenarioId?: number;
+  achievementsUnlocked: AchievementUnlocked[];
 }

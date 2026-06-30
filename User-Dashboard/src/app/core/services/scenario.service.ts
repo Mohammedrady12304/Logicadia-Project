@@ -16,6 +16,6 @@ export class ScenarioService {
   }
 
   submitChoice(scenarioId: number, dto: SubmitChoiceDto): Observable<SubmitResultDto> {
-    return this.http.post<SubmitResultDto>(`${this.apiUrl}/${scenarioId}/submit`, dto);
+  return this.http.post<SubmitResultDto>('https://localhost:44342/api/Choices/submit', dto);
 }
 }
