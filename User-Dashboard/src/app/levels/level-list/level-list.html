@@ -1,442 +1,187 @@
 <app-nav-bar></app-nav-bar>
 
-
 <div class="path-container">
 
+<div class="header">
 
+<div class="logo">
+LOGICADIA
+</div>
 
-  <!-- Header -->
-  <div class="header">
+<div class="header-right">
 
+<div class="avatar">
+🙂
+</div>
 
-    <div class="logo">
-      LOGICADIA
-    </div>
+<div class="xp-badge">
+{{ totalXp }} XP
+</div>
 
+</div>
 
+</div>
 
-    <div class="header-right">
 
+<div class="progress-row">
 
-      <div class="avatar">
-        🙂
-      </div>
+<span class="progress-label">
+{{progressPercent}}%
+</span>
 
 
-      <div class="xp-badge">
-        {{ totalXp }} XP
-      </div>
+<div class="progress-track">
 
+<div 
+class="progress-fill"
+[style.width.%]="progressPercent">
+</div>
 
-    </div>
+</div>
 
+</div>
 
-  </div>
 
 
+<div *ngIf="isLoading" class="loading-state">
 
+<div class="spinner-border"></div>
 
+</div>
 
-  <!-- Progress bar -->
 
-  <div class="progress-row">
 
 
-    <span class="progress-label">
-      {{ progressPercent }}%
-    </span>
+<div *ngIf="errorMessage" class="alert alert-danger">
 
+{{errorMessage}}
 
+</div>
 
-    <div class="progress-track">
 
 
-      <div
-        class="progress-fill"
-        [style.width.%]="progressPercent">
-      </div>
 
 
-    </div>
+<div class="learning-map" 
+*ngIf="!isLoading && !errorMessage && levels.length > 0">
 
 
-  </div>
+<div class="character">
 
+🧒
 
+<span>
+Start
+</span>
 
+</div>
 
 
 
 
-  <!-- Loading -->
+<div class="path-line"></div>
 
-  <div
-    *ngIf="isLoading"
-    class="loading-state">
 
 
-    <div class="spinner-border text-light"></div>
 
 
-  </div>
+<div 
+class="level-card"
+*ngFor="let level of levels; let i=index"
+(click)="openLevel(level)"
+[ngClass]="getStatus(level,i)">
 
 
 
+<div class="level-icon">
 
+{{ 
+getStatus(level,i)==='completed' 
+? '🏆' 
+: getStatus(level,i)==='active'
+? '⭐'
+:
+'🔒'
+}}
 
+</div>
 
-  <!-- Error -->
 
-  <div
-    *ngIf="errorMessage"
-    class="alert alert-danger">
 
+<h3>
 
-    {{ errorMessage }}
+{{level.title}}
 
+</h3>
 
-  </div>
 
 
+<p *ngIf="getStatus(level,i)==='active'">
 
+Current Quest 🚀
 
+</p>
 
 
 
-  <!-- Path -->
+</div>
 
-  <svg
-    *ngIf="!isLoading && !errorMessage && levels.length > 0"
-    width="100%"
-    viewBox="0 0 600 280"
-    class="path-svg">
 
 
 
-    <!-- Main path -->
 
-    <path
-      d="M40 60 Q160 60 160 130 Q160 200 280 200 Q400 200 400 130 Q400 60 520 60"
-      fill="none"
-      stroke="#5a52c9"
-      stroke-width="22"
-      stroke-linecap="round"/>
+<div class="floating-item item1">
+⭐
+</div>
 
 
+<div class="floating-item item2">
+🧩
+</div>
 
-    <path
-      d="M40 60 Q160 60 160 130 Q160 200 280 200 Q400 200 400 130 Q400 60 520 60"
-      fill="none"
-      stroke="#8a82f0"
-      stroke-width="2"
-      stroke-dasharray="4 8"
-      stroke-linecap="round"
-      opacity="0.6"/>
 
+<div class="floating-item item3">
+✨
+</div>
 
 
+</div>
 
 
 
-    <!-- Levels -->
 
-    <g
-      *ngFor="let level of levels; let i = index"
 
-      (click)="openLevel(level)"
+<div 
+*ngIf="!isLoading && levels.length===0"
+class="empty-state">
 
-      [style.cursor]="level.isUnlocked 
-      ? 'pointer' 
-      : 'not-allowed'">
+No levels available.
 
+</div>
 
 
 
 
-      <ng-container
-        [ngSwitch]="getStatus(level,i)">
 
+<div class="continue-row"
+*ngIf="!isLoading && levels.length > 0">
 
 
+<button class="continue-btn">
 
+Continue 🚀
 
+</button>
 
-        <!-- Completed -->
 
-        <g *ngSwitchCase="'completed'">
+<p class="encourage-text">
 
+You are doing amazing! Keep going! ⭐
 
-          <circle
-            [attr.cx]="getNodePosition(i).x"
-            [attr.cy]="getNodePosition(i).y"
-            r="20"
-            fill="#3ecf8e"/>
+</p>
 
 
+</div>
 
-          <path
-
-            [attr.transform]="
-            'translate(' +
-            (getNodePosition(i).x - 8)
-            + ',' +
-            (getNodePosition(i).y - 7)
-            + ')'
-            "
-
-            d="M0 6l5 6 11-13"
-
-            fill="none"
-
-            stroke="#0c3d28"
-
-            stroke-width="3"
-
-            stroke-linecap="round"
-
-            stroke-linejoin="round"/>
-
-
-        </g>
-
-
-
-
-
-
-
-        <!-- Active -->
-
-        <g *ngSwitchCase="'active'">
-
-
-          <circle
-
-            [attr.cx]="getNodePosition(i).x"
-
-            [attr.cy]="getNodePosition(i).y"
-
-            r="26"
-
-            fill="#f5d76e"
-
-            opacity="0.3"/>
-
-
-
-          <circle
-
-            [attr.cx]="getNodePosition(i).x"
-
-            [attr.cy]="getNodePosition(i).y"
-
-            r="20"
-
-            fill="#f5a623"/>
-
-
-
-          <text
-
-            [attr.x]="getNodePosition(i).x"
-
-            [attr.y]="getNodePosition(i).y + 6"
-
-            text-anchor="middle"
-
-            font-size="18">
-
-            ★
-
-          </text>
-
-
-
-        </g>
-
-
-
-
-
-
-
-        <!-- Locked -->
-
-        <g *ngSwitchCase="'locked'">
-
-
-          <circle
-
-            [attr.cx]="getNodePosition(i).x"
-
-            [attr.cy]="getNodePosition(i).y"
-
-            r="20"
-
-            fill="#3a3680"/>
-
-
-
-          <path
-
-            [attr.transform]="
-            'translate(' +
-            (getNodePosition(i).x - 8)
-            + ',' +
-            (getNodePosition(i).y - 6)
-            + ')'
-            "
-
-            d="M0 0h16v12h-16z M4 0v-5a4 4 0 018 0v5"
-
-            fill="none"
-
-            stroke="#9b96d8"
-
-            stroke-width="2"/>
-
-
-
-        </g>
-
-
-
-
-      </ng-container>
-
-
-
-
-
-
-
-      <!-- Level title -->
-
-      <text
-
-        [attr.x]="getNodePosition(i).x"
-
-        [attr.y]="
-        getNodePosition(i).y +
-        (getStatus(level,i)==='active' ? 40 : 36)
-        "
-
-        text-anchor="middle"
-
-        [attr.fill]="
-        getStatus(level,i)==='locked'
-        ? '#9b96d8'
-        : '#ffffff'
-        "
-
-        font-size="13"
-
-        font-weight="500">
-
-
-        {{ level.title }}
-
-
-      </text>
-
-
-
-
-
-
-
-      <!-- Active label -->
-
-      <text
-
-        *ngIf="getStatus(level,i)==='active'"
-
-        [attr.x]="getNodePosition(i).x"
-
-        [attr.y]="getNodePosition(i).y + 56"
-
-        text-anchor="middle"
-
-        fill="#f5a623"
-
-        font-size="11"
-
-        font-weight="500">
-
-
-        ACTIVE
-
-
-      </text>
-
-
-
-
-
-    </g>
-
-
-
-  </svg>
-
-
-
-
-
-
-
-
-
-  <!-- Empty -->
-
-  <div
-
-    *ngIf="!isLoading && levels.length === 0"
-
-    class="empty-state">
-
-
-    No levels available.
-
-
-  </div>
-
-
-
-
-
-
-
-
-  <!-- Continue -->
-
-  <div
-
-    class="continue-row"
-
-    *ngIf="!isLoading && levels.length > 0">
-
-
-    <button
-
-      class="continue-btn">
-
-
-      Continue
-
-
-    </button>
-
-
-
-    <p class="encourage-text">
-
-      You are doing amazing! Keep going!
-
-    </p>
-
-
-
-  </div>
 
 </div>
