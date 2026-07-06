@@ -28,6 +28,10 @@ export const routes: Routes = [
         loadComponent: () => import('./parent/children/children').then(m => m.Children)
       },
       {
+           path: 'register-child',
+             loadComponent: () => import ('./auth/register-child/register-child').then(m =>m.RegisterChild)
+            },
+      {
         path: 'child/:id/progress',
         loadComponent: () => import('./parent/child-progress/child-progress').then(m => m.ChildProgress)
       },

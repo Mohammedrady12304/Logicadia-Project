@@ -16,9 +16,10 @@ export interface RegisterParentDto {
 }
 
 export interface RegisterChildDto {
+  username: string;
+  password: string;
   name: string;
   age: number;
-  password: string;
 }
 
 export interface AuthResultDto {

@@ -1,0 +1,224 @@
+.register-child-page{
+min-height:100vh;
+background:linear-gradient(180deg,#f5f7ff,#ffffff);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 20px 70px;
+position:relative;
+overflow:hidden;
+}
+
+.register-child-page::before{
+content:"";
+position:absolute;
+width:380px;
+height:380px;
+background:#dde7ff;
+border-radius:50%;
+top:-140px;
+left:-140px;
+filter:blur(80px);
+}
+
+.register-child-page::after{
+content:"";
+position:absolute;
+width:320px;
+height:320px;
+background:#ffe6d5;
+border-radius:50%;
+right:-120px;
+bottom:-120px;
+filter:blur(80px);
+}
+
+.register-card{
+width:100%;
+max-width:550px;
+background:white;
+padding:45px;
+border-radius:45px;
+box-shadow:0 30px 70px rgba(108,99,255,.15);
+position:relative;
+z-index:2;
+text-align:center;
+}
+
+.card-icon{
+width:120px;
+height:120px;
+margin:auto;
+border-radius:50%;
+background:linear-gradient(135deg,#6C63FF,#FF9F43);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:60px;
+animation:float 3s infinite;
+}
+
+.register-card h1{
+margin:25px 0 10px;
+font-size:38px;
+color:#342080;
+}
+
+.subtitle{
+color:#777;
+font-size:17px;
+margin-bottom:35px;
+line-height:1.6;
+}
+
+.field{
+text-align:left;
+margin-bottom:22px;
+}
+
+.field label{
+display:block;
+margin-bottom:10px;
+font-weight:bold;
+color:#342080;
+}
+
+.field input{
+width:100%;
+padding:16px 20px;
+border:2px solid transparent;
+border-radius:18px;
+background:#f5f7ff;
+font-size:16px;
+transition:.3s;
+outline:none;
+box-sizing:border-box;
+}
+
+.field input:focus{
+border-color:#6C63FF;
+background:white;
+box-shadow:0 0 0 5px rgba(108,99,255,.12);
+}
+
+.register-btn{
+width:100%;
+margin-top:20px;
+padding:18px;
+border:none;
+border-radius:35px;
+background:linear-gradient(135deg,#6C63FF,#FF9F43);
+color:white;
+font-size:20px;
+font-weight:bold;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 20px 40px rgba(108,99,255,.25);
+}
+
+.register-btn:hover{
+transform:scale(1.03);
+}
+
+.success-box{
+display:flex;
+align-items:center;
+gap:15px;
+background:linear-gradient(135deg,#e8fff1,#d8ffe6);
+border:2px solid #53c47b;
+padding:18px;
+border-radius:20px;
+margin:25px 0;
+color:#1d6d3a;
+font-weight:600;
+box-shadow:0 12px 30px rgba(83,196,123,.18);
+animation:messageShow .4s ease;
+}
+
+.error-box{
+display:flex;
+align-items:center;
+gap:15px;
+background:linear-gradient(135deg,#fff0f0,#ffe2e2);
+border:2px solid #ff8b8b;
+padding:18px;
+border-radius:20px;
+margin:25px 0;
+color:#b3261e;
+font-weight:600;
+box-shadow:0 12px 30px rgba(255,120,120,.18);
+animation:messageShow .4s ease;
+}
+
+.message-icon{
+font-size:32px;
+flex-shrink:0;
+}
+
+.message-text{
+font-size:16px;
+line-height:1.5;
+}
+
+.bubble{
+position:absolute;
+font-size:45px;
+animation:float 4s infinite;
+z-index:1;
+}
+
+.b1{
+top:150px;
+left:70px;
+}
+
+.b2{
+right:90px;
+top:200px;
+}
+
+.b3{
+left:120px;
+bottom:120px;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-15px);
+}
+}
+
+@keyframes messageShow{
+from{
+opacity:0;
+transform:translateY(-10px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:600px){
+
+.register-card{
+padding:30px 25px;
+}
+
+.register-card h1{
+font-size:30px;
+}
+
+.card-icon{
+width:90px;
+height:90px;
+font-size:45px;
+}
+
+.success-box,
+.error-box{
+padding:15px;
+font-size:15px;
+}
+
+}

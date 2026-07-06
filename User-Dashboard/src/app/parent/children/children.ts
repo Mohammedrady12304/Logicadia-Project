@@ -1,12 +1,12 @@
 import { Component,OnInit,ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router , RouterLink } from '@angular/router';
 import { ParentService } from '../../core/services/parent.service';
 import { ChildSummaryDto } from '../../core/models/parent.model';
 
 @Component({
 selector:'app-children',
-imports:[CommonModule],
+imports:[CommonModule , RouterLink],
 templateUrl:'./children.html',
 styleUrl:'./children.css',
 })
