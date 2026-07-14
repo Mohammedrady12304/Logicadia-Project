@@ -100,41 +100,22 @@ namespace Logicadia.Infrastructure.Services
             if (child == null)
                 return false;
 
+            child.Age = dto.Age;
+            child.Interests = dto.Interests;
+            child.FavoriteColor = dto.FavoriteColor;
+            child.FavoriteAnimal = dto.FavoriteAnimal;
+            child.LearningTopic = dto.LearningTopic;
+            child.ReadingLevel = dto.ReadingLevel;
+            child.PreferredLanguage = dto.PreferredLanguage;
 
-            if (dto.ScenarioId == null)
-                return false;
+            
+            _context.Set<Child>().Update(child);
+            var affectedRows = await _context.SaveChangesAsync();
 
-
-            var progress = await _context.UserProgress
-                .FirstOrDefaultAsync(p => p.ChildId == childId);
-
-
-            if (progress == null)
-            {
-                progress = new UserProgress
-                {
-                    ChildId = childId,
-
-                    UserId = child.Parent.UserId,
-
-                    LevelId = dto.LevelId,
-                    StoryId = dto.StoryId,
-                    ScenarioId = dto.ScenarioId.Value
-                };
-
-                _context.UserProgress.Add(progress);
-            }
-            else
-            {
-                progress.LevelId = dto.LevelId;
-                progress.StoryId = dto.StoryId;
-                progress.ScenarioId = dto.ScenarioId.Value;
-            }
+            return affectedRows > 0;
 
 
-            await _context.SaveChangesAsync();
 
-            return true;
         }
     }
 }
