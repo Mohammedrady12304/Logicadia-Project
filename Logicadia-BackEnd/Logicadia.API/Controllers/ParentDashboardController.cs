@@ -51,15 +51,38 @@ namespace Logicadia.API.Controllers
         }
 
         [HttpPost("child/{childId}/assign-path")]
-        public async Task<IActionResult> AssignPath([FromRoute] int childId, [FromBody] AssignPathDto dto)
+
+        [HttpPost("child/{childId}/assign-path")]
+        public async Task<IActionResult> AssignPath( [FromRoute] int childId,[FromBody] AssignPathDto assignPathDto)
         {
-            var parentId = GetCurrentParentId();
-            var result = await _dashboardService.AssignPathToChildAsync(parentId, childId, dto);
+            // 1. التحقق من صحة البيانات المدخلة في الـ DTO
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            if (!result)
-                return BadRequest(new { message = "Failed to update the learning path, please check the data and permissions." });
+            try
+            {
+               
+                var parentUserId = GetCurrentParentId();
 
-            return Ok(new { message = "The learning path has been updated successfully." });
+               
+                var isSaved = await _dashboardService.AssignPathToChildAsync(parentUserId, childId, assignPathDto);
+
+                
+                if (!isSaved)
+                    return BadRequest(new { message = "failed to save child preferences." });
+
+                
+                return Ok(new { message = "Child preferences saved successfully." });
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                return Forbid(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                
+                return StatusCode(500, new { message = "internal server error.", error = ex.Message });
+            }
         }
     }
 }
