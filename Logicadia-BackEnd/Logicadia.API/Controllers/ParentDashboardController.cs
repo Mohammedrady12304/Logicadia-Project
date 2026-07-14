@@ -50,7 +50,7 @@ namespace Logicadia.API.Controllers
             return Ok(progress);
         }
 
-        [HttpPost("child/{childId}/assign-path")]
+        //[HttpPost("child/{childId}/assign-path")]
 
         [HttpPost("child/{childId}/assign-path")]
         public async Task<IActionResult> AssignPath( [FromRoute] int childId,[FromBody] AssignPathDto assignPathDto)

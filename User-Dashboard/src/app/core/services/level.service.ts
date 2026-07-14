@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LevelDetailDto ,LevelDto  } from '../models/level.models';
+import { LevelDetailDto, LevelDto } from '../models/level.models';
 
 @Injectable({
   providedIn: 'root',
@@ -11,11 +11,15 @@ export class LevelService {
 
   constructor(private http: HttpClient) {}
 
-  getAllLevels(): Observable<any> {
-    return this.http.get<any>(this.apiUrl);
+  getAllLevels(): Observable<LevelDto[]> {
+    return this.http.get<LevelDto[]>(this.apiUrl);
   }
 
   getLevelById(levelId: number): Observable<LevelDetailDto> {
     return this.http.get<LevelDetailDto>(`${this.apiUrl}/${levelId}`);
+  }
+
+  completeLevel(levelId: number): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/${levelId}/complete`, {});
   }
 }

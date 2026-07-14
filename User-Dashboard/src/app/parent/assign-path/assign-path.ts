@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ParentService } from '../../core/services/parent.service';
 import { AssignPathDto } from '../../core/models/parent.model';
-import { LevelService } from '../../core/services/level.service';
-import { LevelDto } from '../../core/models/level.models';
 
 @Component({
   selector: 'app-assign-path',
@@ -15,68 +13,101 @@ import { LevelDto } from '../../core/models/level.models';
   styleUrl: './assign-path.css'
 })
 export class AssignPath implements OnInit {
+
   childId!: number;
-  levels: LevelDto[] = [];
   isLoading = false;
   isSubmitting = false;
   successMessage = '';
   errorMessage = '';
 
   dto: AssignPathDto = {
-    levelId: 0,
-    storyId: undefined,
-    scenarioId: undefined
+    age: 0,
+    interests: '',
+    favoriteColor: '',
+    favoriteAnimal: '',
+    learningTopic: '',
+    readingLevel: '',
+    preferredLanguage: ''
   };
 
   constructor(
     private parentService: ParentService,
-    private levelService: LevelService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.childId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadLevels();
   }
 
-  loadLevels() {
-    this.isLoading = true;
-    this.levelService.getAllLevels().subscribe({
-      next: (data) => {
-        this.levels = data;
-        this.isLoading = false;
-      },
-      error: () => {
-        this.errorMessage = 'Failed to load levels.';
-        this.isLoading = false;
-      }
-    });
+  private isFormValid(): boolean {
+    if (!this.dto.age || this.dto.age <= 0) {
+      this.errorMessage = 'Please enter a valid age.';
+      return false;
+    }
+    if (!this.dto.interests?.trim()) {
+      this.errorMessage = 'Please enter interests.';
+      return false;
+    }
+    if (!this.dto.favoriteColor?.trim()) {
+      this.errorMessage = 'Please enter favorite color.';
+      return false;
+    }
+    if (!this.dto.favoriteAnimal?.trim()) {
+      this.errorMessage = 'Please enter favorite animal.';
+      return false;
+    }
+    if (!this.dto.learningTopic?.trim()) {
+      this.errorMessage = 'Please enter learning topic.';
+      return false;
+    }
+    if (!this.dto.readingLevel?.trim()) {
+      this.errorMessage = 'Please select reading level.';
+      return false;
+    }
+    if (!this.dto.preferredLanguage?.trim()) {
+      this.errorMessage = 'Please select preferred language.';
+      return false;
+    }
+    return true;
   }
 
-  submit() {
-    if (!this.dto.levelId) {
-      this.errorMessage = 'Please select a level.';
+  submit(): void {
+
+    this.errorMessage = '';
+    this.successMessage = '';
+
+    if (!this.isFormValid()) {
+      this.cdr.detectChanges();
       return;
     }
 
     this.isSubmitting = true;
-    this.errorMessage = '';
-    this.successMessage = '';
+    this.cdr.detectChanges();
 
     this.parentService.assignPath(this.childId, this.dto).subscribe({
+
       next: (res) => {
-        this.successMessage = res.message;
+        this.successMessage = res.message || 'Learning path assigned successfully.';
+        this.errorMessage = '';
         this.isSubmitting = false;
+        this.cdr.detectChanges();
       },
-      error: () => {
-        this.errorMessage = 'Failed to assign path.';
+
+      error: (err) => {
+        this.errorMessage = err?.error?.message || 'Failed to assign path.';
+        this.successMessage = '';
         this.isSubmitting = false;
+        this.cdr.detectChanges();
       }
+
     });
+
   }
 
-  goBack() {
+  goBack(): void {
     this.router.navigate(['/parent/child', this.childId, 'progress']);
   }
+
 }

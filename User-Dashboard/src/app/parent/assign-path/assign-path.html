@@ -23,33 +23,78 @@
   <div class="form-card" *ngIf="!isLoading">
 
     <div class="field-group">
-      <label class="field-label">Select Level</label>
-      <select class="field-select" [(ngModel)]="dto.levelId" name="levelId">
-        <option [value]="0" disabled>Choose a level...</option>
-        <option *ngFor="let level of levels" [value]="level.id">
-          {{ level.title }}
-        </option>
+      <label class="field-label">Age</label>
+      <input
+        type="number"
+        class="field-input"
+        placeholder="Enter age"
+        [(ngModel)]="dto.age"
+        name="age"
+        min="1"
+        max="18">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Interests</label>
+      <input
+        type="text"
+        class="field-input"
+        placeholder="e.g. drawing, football, space"
+        [(ngModel)]="dto.interests"
+        name="interests"
+        maxlength="250">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Favorite Color</label>
+      <input
+        type="text"
+        class="field-input"
+        placeholder="Enter favorite color"
+        [(ngModel)]="dto.favoriteColor"
+        name="favoriteColor"
+        maxlength="50">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Favorite Animal</label>
+      <input
+        type="text"
+        class="field-input"
+        placeholder="Enter favorite animal"
+        [(ngModel)]="dto.favoriteAnimal"
+        name="favoriteAnimal"
+        maxlength="50">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Learning Topic</label>
+      <input
+        type="text"
+        class="field-input"
+        placeholder="Enter learning topic"
+        [(ngModel)]="dto.learningTopic"
+        name="learningTopic"
+        maxlength="100">
+    </div>
+
+    <div class="field-group">
+      <label class="field-label">Reading Level</label>
+      <select class="field-select" [(ngModel)]="dto.readingLevel" name="readingLevel">
+        <option value="" disabled>Choose reading level...</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
       </select>
     </div>
 
     <div class="field-group">
-      <label class="field-label">Story ID <span class="optional">(optional)</span></label>
-      <input
-        type="number"
-        class="field-input"
-        placeholder="Enter story ID"
-        [(ngModel)]="dto.storyId"
-        name="storyId">
-    </div>
-
-    <div class="field-group">
-      <label class="field-label">Scenario ID <span class="optional">(optional)</span></label>
-      <input
-        type="number"
-        class="field-input"
-        placeholder="Enter scenario ID"
-        [(ngModel)]="dto.scenarioId"
-        name="scenarioId">
+      <label class="field-label">Preferred Language</label>
+      <select class="field-select" [(ngModel)]="dto.preferredLanguage" name="preferredLanguage">
+        <option value="" disabled>Choose language...</option>
+        <option value="Arabic">Arabic</option>
+        <option value="English">English</option>
+      </select>
     </div>
 
     <button class="btn-submit" (click)="submit()" [disabled]="isSubmitting">

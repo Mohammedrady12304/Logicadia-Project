@@ -19,7 +19,11 @@ export interface ChildProgressDetailsDto {
 }
 
 export interface AssignPathDto {
-  levelId: number;
-  storyId?: number;
-  scenarioId?: number;
+  age: number;
+  interests: string;
+  favoriteColor: string;
+  favoriteAnimal: string;
+  learningTopic: string;
+  readingLevel: string;
+  preferredLanguage: string;
 }

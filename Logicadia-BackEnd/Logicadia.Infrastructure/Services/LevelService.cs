@@ -83,31 +83,50 @@ namespace Logicadia.Infrastructure.Services
                 .OrderBy(l => l.OrderIndex)
                 .ToListAsync();
 
-            var userProgress = await _context.UserProgress
+            // الليفلات اللي عند اليوزر progress فيها (يعني حل حاجة جواها)
+            var levelIdsWithProgress = await _context.UserProgress
                 .Where(p => p.UserId == userId)
                 .Select(p => p.Scenario.Story.LevelId)
                 .Distinct()
                 .ToListAsync();
 
-            return levels.Select((l, index) =>
-            {
-                bool isUnlocked = index == 0 || userProgress.Contains(l.Id);
-                var firstLevelProgress = _context.UserProgress
-                    .Where(p => p.UserId == userId && p.Scenario.Story.LevelId == l.Id)
-                    .OrderByDescending(p => p.CompletedAt)
-                    .FirstOrDefault();
+            var result = new List<LevelDTO>(levels.Count);
 
-                return new LevelDTO
+            for (int index = 0; index < levels.Count; index++)
+            {
+                var level = levels[index];
+
+                bool isUnlocked;
+                if (index == 0)
                 {
-                    Id = l.Id,
-                    Title = l.Title,
-                    Description = l.Description,
-                    OrderIndex = l.OrderIndex,
-                    XpReward = l.XpReward,
+                    // أول ليفل دايمًا مفتوح
+                    isUnlocked = true;
+                }
+                else
+                {
+                    // الليفل ده يتفتح لو عند اليوزر progress في الليفل *السابق* (مش نفس الليفل)
+                    var previousLevel = levels[index - 1];
+                    isUnlocked = levelIdsWithProgress.Contains(previousLevel.Id);
+                }
+
+                var latestProgress = await _context.UserProgress
+                    .Where(p => p.UserId == userId && p.Scenario.Story.LevelId == level.Id)
+                    .OrderByDescending(p => p.CompletedAt)
+                    .FirstOrDefaultAsync();
+
+                result.Add(new LevelDTO
+                {
+                    Id = level.Id,
+                    Title = level.Title,
+                    Description = level.Description,
+                    OrderIndex = level.OrderIndex,
+                    XpReward = level.XpReward,
                     IsUnlocked = isUnlocked,
-                    UnlockedAt = firstLevelProgress?.CompletedAt
-                };
-            }).ToList();
+                    UnlockedAt = latestProgress?.CompletedAt
+                });
+            }
+
+            return result;
         }
 
         public async Task<LevelDetailDTO?> GetLevelByIdAsync(int levelId, int userId)
@@ -183,10 +202,17 @@ namespace Logicadia.Infrastructure.Services
             var level = await _context.Levels.FindAsync(levelId);
             if (level == null) return false;
 
-            if (level.OrderIndex == 0) return true;
+            // ملحوظة: عندك OrderIndex بيبدأ من 1 مش من 0 (زي ما ظاهر في الـ JSON)
+            // فالمقارنة دي كانت غلط: level.OrderIndex == 0
+            var firstLevel = await _context.Levels
+                .OrderBy(l => l.OrderIndex)
+                .FirstOrDefaultAsync();
+
+            if (firstLevel != null && level.Id == firstLevel.Id) return true;
 
             var previousLevelId = await _context.Levels
-                .Where(l => l.OrderIndex == level.OrderIndex - 1)
+                .Where(l => l.OrderIndex < level.OrderIndex)
+                .OrderByDescending(l => l.OrderIndex)
                 .Select(l => l.Id)
                 .FirstOrDefaultAsync();
 
