@@ -40,4 +40,8 @@
     <ProjectReference Include="..\Logicadia.Infrastructure\Logicadia.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

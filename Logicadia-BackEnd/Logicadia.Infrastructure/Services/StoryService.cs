@@ -94,6 +94,23 @@ namespace Logicadia.Infrastructure.Services
         }
 
         // ============ User ============
+        public async Task<StoryDTO?> AttachVideoAsync(int storyId, string videoUrl)
+        {
+            var story = await _context.Stories.FindAsync(storyId); // حسب اسم الـ context عندك
+            if (story == null) return null;
+
+            story.VideoUrl = videoUrl;
+            await _context.SaveChangesAsync();
+
+            return new StoryDTO
+            {
+                Id = story.Id,
+                LevelId = story.LevelId,
+                Title = story.Title,
+                NarrativeText = story.NarrativeText,
+                OrderIndex = story.OrderIndex
+            };
+        }
 
         public async Task<List<StoryDTO>> GetStoriesByLevelAsync(int levelId, int userId)
         {

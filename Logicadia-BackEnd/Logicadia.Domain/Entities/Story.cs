@@ -7,6 +7,8 @@ namespace Logicadia.Domain.Entities
         public int Id { get; set; }
         public int LevelId { get; set; }
         public string Title { get; set; } = null!;
+        public string? VideoUrl { get; set; }
+        public string? ThumbnailUrl { get; set; }
         public string? NarrativeText { get; set; }
         public int OrderIndex { get; set; }
 

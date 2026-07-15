@@ -7,11 +7,12 @@ namespace Logicadia.Application.Features.DTOs.Stories
         public int Id { get; set; }
         public int LevelId { get; set; }
         public string Title { get; set; } = null!;
+        public string? VideoUrl { get; set; }
+        public string? ThumbnailUrl { get; set; }
         public string? NarrativeText { get; set; }
         public int OrderIndex { get; set; }
         public bool IsCompleted { get; set; }
     }
-
     public class StoryDetailDTO : StoryDTO
     {
         public List<ScenarioDTO> Scenarios { get; set; } = new List<ScenarioDTO>();

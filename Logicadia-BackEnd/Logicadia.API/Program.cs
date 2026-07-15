@@ -167,6 +167,7 @@ namespace Logicadia.API
             // ✅ الترتيب مهم جداً — Authentication الأول
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseStaticFiles();
 
             // ✅ Seed Admin باستخدام UserManager بدل BCrypt مباشرة
             using (var scope = app.Services.CreateScope())

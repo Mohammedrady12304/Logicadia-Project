@@ -13,6 +13,7 @@ namespace Logicadia.Application.Interfaces
         // Admin
         Task<IEnumerable<StoryAdminDto>> GetAllForAdminAsync();
         Task<PagedResult<StoryAdminDto>> GetPagedForAdminAsync(PaginationParams pagination);
+        Task<StoryDTO?> AttachVideoAsync(int storyId, string videoUrl);
         Task<PagedResult<StoryAdminDto>> GetPagedByLevelIdForAdminAsync(int levelId, PaginationParams pagination); Task<IEnumerable<StoryAdminDto>> GetByLevelIdForAdminAsync(int levelId);
         Task<StoryAdminDto?> GetByIdForAdminAsync(int id);
         Task<StoryAdminDto> CreateAsync(CreateStoryDto dto);
